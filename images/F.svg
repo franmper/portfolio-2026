@@ -1,0 +1,13 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" fill="#252945"/>
+  <!-- Top-right bracket -->
+  <polyline points="54,20 78,20 78,47" fill="none" stroke="#f9f0f1" stroke-width="3.2" stroke-linecap="square"/>
+  <!-- Bottom-left bracket -->
+  <polyline points="22,53 22,80 46,80" fill="none" stroke="#f9f0f1" stroke-width="3.2" stroke-linecap="square"/>
+  <!-- Letter F - vertical stem -->
+  <line x1="43" y1="37" x2="43" y2="68" stroke="#f9f0f1" stroke-width="3" stroke-linecap="square"/>
+  <!-- Letter F - top bar -->
+  <line x1="43" y1="37" x2="62" y2="37" stroke="#f9f0f1" stroke-width="3" stroke-linecap="square"/>
+  <!-- Letter F - middle bar -->
+  <line x1="43" y1="51" x2="58" y2="51" stroke="#f9f0f1" stroke-width="3" stroke-linecap="square"/>
+</svg>

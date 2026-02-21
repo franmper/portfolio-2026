@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroTitle from "../components/HeroTitle.astro";
+import HeroGrid from "../components/HeroGrid.astro";
+import Gallery from "../components/Gallery";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <main class="min-h-screen">
+    <Header />
+    <HeroTitle />
+    <HeroGrid />
+    <Gallery client:visible />
+    <Footer />
+  </main>
+</Layout>

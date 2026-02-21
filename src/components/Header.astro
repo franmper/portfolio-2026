@@ -1,0 +1,30 @@
+---
+const categories = ["MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
+---
+
+<header class="flex items-center justify-between px-[60px] py-7 max-w-[1440px] mx-auto w-full max-lg:px-6 max-md:py-4">
+  <a href="/" class="shrink-0">
+    <img src="/images/F.svg" alt="Francisco Peralta" width="36" height="36" />
+  </a>
+
+  <div class="flex items-center gap-6">
+    <nav class="flex items-center gap-6 max-md:hidden">
+      {categories.map((cat) => (
+        <a
+          href={`#gallery`}
+          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors"
+        >
+          {cat}
+        </a>
+      ))}
+    </nav>
+
+    <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
+
+    <div class="flex flex-col gap-0.5">
+      <span class="text-[13px] tracking-[1px] text-text">Contact</span>
+      <span class="text-[10px] tracking-[0.5px] text-text-50">hello@franciscoperalta.com</span>
+      <span class="text-[10px] tracking-[0.5px] text-text-50">@franmper</span>
+    </div>
+  </div>
+</header>

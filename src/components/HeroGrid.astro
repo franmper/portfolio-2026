@@ -1,0 +1,77 @@
+---
+interface HeroPhoto {
+  src: string;
+  label: string;
+  alt: string;
+}
+
+interface Props {
+  photos?: HeroPhoto[];
+}
+
+const defaultPhotos: HeroPhoto[] = [
+  { src: "https://images.unsplash.com/photo-1729882892770-15186a1a9d44?w=800&fit=max&auto=format", label: "motorsports", alt: "Motorsports photography" },
+  { src: "https://images.unsplash.com/photo-1694720322566-f769f720de49?w=600&fit=max&auto=format", label: "shows", alt: "Shows photography" },
+  { src: "https://images.unsplash.com/photo-1556199859-0a5f16d962a8?w=600&fit=max&auto=format", label: "travel", alt: "Travel photography" },
+];
+
+const photos = Astro.props.photos || defaultPhotos;
+---
+
+<section class="flex gap-3 px-[60px] py-[10px] max-w-[1440px] mx-auto w-full max-lg:px-6 max-md:flex-col max-md:gap-2"
+  style="height: 580px;"
+>
+  <!-- Left: Motorsports (55%) -->
+  <a
+    href="#gallery"
+    class="relative w-[55%] h-full overflow-hidden rounded-[3px] group max-md:w-full max-md:h-[300px]"
+  >
+    <img
+      src={photos[0].src}
+      alt={photos[0].alt}
+      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
+    <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
+      {photos[0].label}
+    </span>
+  </a>
+
+  <!-- Right column: Shows (taller) + Travel (shorter) -->
+  <div class="flex flex-col gap-3 w-[45%] h-full max-md:w-full max-md:h-[400px]">
+    <!-- Shows (60%) -->
+    <a
+      href="#gallery"
+      class="relative flex-[1.5] overflow-hidden rounded-[3px] group"
+    >
+      <img
+        src={photos[1].src}
+        alt={photos[1].alt}
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
+      <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
+        {photos[1].label}
+      </span>
+    </a>
+
+    <!-- Travel (40%) -->
+    <a
+      href="#gallery"
+      class="relative flex-1 overflow-hidden rounded-[3px] group"
+    >
+      <img
+        src={photos[2].src}
+        alt={photos[2].alt}
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
+      <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
+        {photos[2].label}
+      </span>
+    </a>
+  </div>
+</section>
