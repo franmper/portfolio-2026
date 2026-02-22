@@ -26,9 +26,22 @@ export const galleryPhotosQuery = `
     title,
     image,
     "category": category->{ name, "slug": slug.current },
+    "project": project->{ name, "slug": slug.current },
     "lqip": image.asset->metadata.lqip,
     "dimensions": image.asset->metadata.dimensions,
     exif
+  }
+`;
+
+export const projectsQuery = `
+  *[_type == "project"] | order(order asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    description,
+    coverImage,
+    date,
+    order
   }
 `;
 

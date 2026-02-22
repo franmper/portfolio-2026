@@ -12,7 +12,8 @@ const categories = ["MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
       {categories.map((cat) => (
         <a
           href={`#gallery`}
-          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors"
+          data-filter={cat}
+          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors nav-filter"
         >
           {cat}
         </a>
@@ -21,10 +22,73 @@ const categories = ["MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
 
     <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
 
-    <div class="flex flex-col gap-0.5">
+    <div class="flex flex-col gap-0.5 max-md:hidden">
       <span class="text-[13px] tracking-[1px] text-text">Contact</span>
       <span class="text-[10px] tracking-[0.5px] text-text-50">hello@franciscoperalta.com</span>
       <span class="text-[10px] tracking-[0.5px] text-text-50">@franmper</span>
     </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="hidden max-md:flex flex-col gap-[5px] p-1" aria-label="Menu">
+      <span class="block w-5 h-px bg-text transition-transform origin-center" id="bar1"></span>
+      <span class="block w-5 h-px bg-text transition-opacity" id="bar2"></span>
+      <span class="block w-5 h-px bg-text transition-transform origin-center" id="bar3"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-bg/95 backdrop-blur-sm z-50 hidden flex-col items-center justify-center gap-6">
+  <button id="mobile-menu-close" class="absolute top-5 right-6 text-text p-2" aria-label="Close menu">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+      <line x1="4" y1="4" x2="16" y2="16" />
+      <line x1="16" y1="4" x2="4" y2="16" />
+    </svg>
+  </button>
+
+  {categories.map((cat) => (
+    <a
+      href="#gallery"
+      data-filter={cat}
+      class="text-[14px] tracking-[3px] text-text-70 hover:text-text transition-colors nav-filter mobile-nav-link"
+    >
+      {cat}
+    </a>
+  ))}
+
+  <div class="w-12 h-px bg-text-10 mt-4"></div>
+
+  <div class="flex flex-col items-center gap-2 mt-2">
+    <a href="mailto:hello@franciscoperalta.com" class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
+      EMAIL
+    </a>
+    <a href="https://instagram.com/franmper" target="_blank" rel="noopener noreferrer" class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
+      @FRANMPER
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('mobile-menu-close');
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu.classList.add('hidden');
+    menu.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  menuBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
+  });
+</script>

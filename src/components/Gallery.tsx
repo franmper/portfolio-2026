@@ -1,5 +1,5 @@
-import { useState, useMemo, lazy, Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useMemo, useRef, useEffect, lazy, Suspense } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 
 const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
@@ -39,6 +39,17 @@ export default function Gallery({ photos = samplePhotos, categories = allCategor
   const [activeFilter, setActiveFilter] = useState("ALL");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const filter = (e as CustomEvent<string>).detail;
+      if (filter) setActiveFilter(filter);
+    };
+    window.addEventListener("set-gallery-filter", handler);
+    return () => window.removeEventListener("set-gallery-filter", handler);
+  }, []);
 
   const filteredPhotos = useMemo(() => {
     if (activeFilter === "ALL") return photos;
@@ -62,10 +73,19 @@ export default function Gallery({ photos = samplePhotos, categories = allCategor
   const lightboxSlides = filteredPhotos.map((p) => ({ src: p.src }));
 
   return (
-    <section id="gallery" className="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-5 max-lg:px-6">
+    <section
+      ref={sectionRef}
+      id="gallery"
+      className="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-5 max-lg:px-6"
+    >
       {/* Filter Tabs */}
-      <div className="flex justify-center gap-2 mb-8">
-        {(categories as string[]).map((cat) => (
+      <motion.div
+        className="flex justify-center gap-2 mb-8 max-sm:flex-wrap"
+        initial={{ opacity: 0, y: 15 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5 }}
+      >
+        {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveFilter(cat)}
@@ -78,21 +98,21 @@ export default function Gallery({ photos = samplePhotos, categories = allCategor
             {cat}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       {/* Masonry Grid */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 max-sm:flex-col">
         {columns.map((col, colIdx) => (
           <div key={colIdx} className="flex-1 flex flex-col gap-2">
             <AnimatePresence mode="popLayout">
-              {col.map((photo) => (
+              {col.map((photo, photoIdx) => (
                 <motion.div
                   key={photo.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.4, delay: photoIdx * 0.05 }}
                   className="relative overflow-hidden rounded-[2px] cursor-pointer group"
                   onClick={() => {
                     const idx = filteredPhotos.findIndex((p) => p.id === photo.id);
@@ -115,11 +135,16 @@ export default function Gallery({ photos = samplePhotos, categories = allCategor
       </div>
 
       {/* View More Button */}
-      <div className="flex justify-center mt-10">
+      <motion.div
+        className="flex justify-center mt-10"
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
         <button className="px-10 py-3 border border-[#f9f0f14d] rounded-[2px] text-[12px] tracking-[3px] text-[#f9f0f1cc] uppercase hover:border-[#f9f0f180] hover:text-[#f9f0f1] transition-colors">
           View More Work
         </button>
-      </div>
+      </motion.div>
 
       {/* Lightbox */}
       {lightboxOpen && (

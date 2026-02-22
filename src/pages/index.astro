@@ -5,14 +5,62 @@ import HeroTitle from "../components/HeroTitle.astro";
 import HeroGrid from "../components/HeroGrid.astro";
 import Gallery from "../components/Gallery";
 import Footer from "../components/Footer.astro";
+import { client } from "../lib/sanity/client";
+import { urlFor } from "../lib/sanity/client";
+import { categoriesQuery, featuredPhotosQuery, galleryPhotosQuery, siteSettingsQuery } from "../lib/sanity/queries";
+import type { Category, Photo, SiteSettings } from "../lib/sanity/types";
+
+// Fetch all data from Sanity
+const [categories, featuredPhotos, galleryPhotos, settings] = await Promise.all([
+  client.fetch<Category[]>(categoriesQuery).catch(() => []),
+  client.fetch<Photo[]>(featuredPhotosQuery).catch(() => []),
+  client.fetch<Photo[]>(galleryPhotosQuery).catch(() => []),
+  client.fetch<SiteSettings>(siteSettingsQuery).catch(() => null),
+]);
+
+// Build hero photos from featured photos
+const heroPhotos = featuredPhotos.length > 0
+  ? featuredPhotos
+    .sort((a, b) => {
+      const order = { left: 0, "top-right": 1, "bottom-right": 2 };
+      return (order[a.heroPosition || "left"] || 0) - (order[b.heroPosition || "left"] || 0);
+    })
+    .map((p) => ({
+      src: urlFor(p.image).width(800).auto("format").url(),
+      label: p.category.name.toLowerCase(),
+      alt: p.title || p.category.name,
+    }))
+  : undefined;
+
+// Build gallery photos for the masonry grid
+const galleryItems = galleryPhotos.length > 0
+  ? galleryPhotos.map((p) => ({
+      id: p._id,
+      src: urlFor(p.image).width(600).auto("format").url(),
+      width: p.dimensions?.width || 600,
+      height: p.dimensions?.height || 600,
+      category: p.category.slug,
+      title: p.title,
+    }))
+  : undefined;
+
+// Build category list for filter tabs
+const categoryNames = categories.length > 0
+  ? ["ALL", ...categories.map((c) => c.name.toUpperCase())]
+  : undefined;
+
+const title = settings?.name
+  ? `${settings.name} | Photography`
+  : undefined;
+const description = settings?.seoDescription || undefined;
 ---
 
-<Layout>
+<Layout title={title} description={description}>
   <main class="min-h-screen">
     <Header />
     <HeroTitle />
-    <HeroGrid />
-    <Gallery client:visible />
+    <HeroGrid photos={heroPhotos} />
+    <Gallery client:visible photos={galleryItems} categories={categoryNames} />
     <Footer />
   </main>
 </Layout>

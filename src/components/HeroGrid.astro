@@ -18,13 +18,12 @@ const defaultPhotos: HeroPhoto[] = [
 const photos = Astro.props.photos || defaultPhotos;
 ---
 
-<section class="flex gap-3 px-[60px] py-[10px] max-w-[1440px] mx-auto w-full max-lg:px-6 max-md:flex-col max-md:gap-2"
-  style="height: 580px;"
->
+<section class="flex gap-3 px-[60px] py-[10px] max-w-[1440px] mx-auto w-full h-[580px] max-lg:px-6 max-md:flex-col max-md:gap-2 max-md:h-auto fade-in fade-in-delay-1">
   <!-- Left: Motorsports (55%) -->
   <a
     href="#gallery"
-    class="relative w-[55%] h-full overflow-hidden rounded-[3px] group max-md:w-full max-md:h-[300px]"
+    data-filter="MOTORSPORTS"
+    class="relative w-[55%] h-full overflow-hidden rounded-[3px] group nav-filter max-md:w-full max-md:h-[300px]"
   >
     <img
       src={photos[0].src}
@@ -43,7 +42,8 @@ const photos = Astro.props.photos || defaultPhotos;
     <!-- Shows (60%) -->
     <a
       href="#gallery"
-      class="relative flex-[1.5] overflow-hidden rounded-[3px] group"
+      data-filter="SHOWS"
+      class="relative flex-[1.5] overflow-hidden rounded-[3px] group nav-filter"
     >
       <img
         src={photos[1].src}
@@ -60,7 +60,8 @@ const photos = Astro.props.photos || defaultPhotos;
     <!-- Travel (40%) -->
     <a
       href="#gallery"
-      class="relative flex-1 overflow-hidden rounded-[3px] group"
+      data-filter="TRAVEL"
+      class="relative flex-1 overflow-hidden rounded-[3px] group nav-filter"
     >
       <img
         src={photos[2].src}

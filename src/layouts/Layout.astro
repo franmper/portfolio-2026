@@ -23,5 +23,18 @@ const {
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <slot />
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+      document.querySelectorAll('.nav-filter').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const filter = e.currentTarget.dataset.filter;
+          if (filter) window.dispatchEvent(new CustomEvent('set-gallery-filter', { detail: filter }));
+        });
+      });
+    </script>
   </body>
 </html>

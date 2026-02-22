@@ -20,11 +20,25 @@ export interface Category {
   order: number;
 }
 
+export interface Project {
+  _id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  coverImage?: SanityImage;
+  date?: string;
+  order: number;
+}
+
 export interface Photo {
   _id: string;
   title?: string;
   image: SanityImage;
   category: {
+    name: string;
+    slug: string;
+  };
+  project?: {
     name: string;
     slug: string;
   };

@@ -1,0 +1,3455 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "poizZ",
+      "x": 0,
+      "y": 0,
+      "name": "Concept A - Dark Grid",
+      "clip": true,
+      "width": 1440,
+      "fill": "#252945",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "CEYer",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            20,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "bWK4s",
+              "name": "logo",
+              "fill": "#f9f0f1",
+              "content": "FRANCISCO PERALTA",
+              "fontFamily": "Questrial",
+              "fontSize": 16,
+              "fontWeight": "normal",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "Tf31N",
+              "name": "nav",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IinJG",
+                  "name": "nav1",
+                  "fill": "#f9f0f180",
+                  "content": "SHOWS",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "cNbAZ",
+                  "name": "nav2",
+                  "fill": "#f9f0f180",
+                  "content": "MOTORSPORTS",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "uP4YJ",
+                  "name": "nav3",
+                  "fill": "#f9f0f180",
+                  "content": "TRAVEL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "bikUK",
+                  "name": "nav4",
+                  "fill": "#f9f0f180",
+                  "content": "NATURE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "2yvb0",
+                  "name": "nav5",
+                  "fill": "#f9f0f1",
+                  "content": "CONTACT",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tZ4Wz",
+          "name": "Hero",
+          "clip": true,
+          "width": "fill_container",
+          "height": 700,
+          "fill": "#1a1f35",
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "1KAD0",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Image",
+              "opacity": 0.6,
+              "metadata": {
+                "type": "unsplash",
+                "username": "wamstudio",
+                "link": "https://unsplash.com/@wamstudio",
+                "author": "Romain Gal"
+              },
+              "width": 1440,
+              "height": 700,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1634564448238-2d954656bdb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg1OTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "N8Gon",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Text",
+              "width": 1440,
+              "height": 700,
+              "layout": "vertical",
+              "gap": 16,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mwh7q",
+                  "name": "heroTitle",
+                  "fill": "#f9f0f1",
+                  "content": "FRANCISCO\nPERALTA",
+                  "lineHeight": 1,
+                  "textAlign": "center",
+                  "fontFamily": "Questrial",
+                  "fontSize": 96,
+                  "fontWeight": "normal",
+                  "letterSpacing": 8
+                },
+                {
+                  "type": "text",
+                  "id": "D2OIN",
+                  "name": "heroSub",
+                  "fill": "#f9f0f180",
+                  "content": "PHOTOGRAPHER",
+                  "fontFamily": "Questrial",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 8
+                },
+                {
+                  "type": "rectangle",
+                  "id": "8023D",
+                  "name": "heroDivider",
+                  "fill": "#f9f0f140",
+                  "width": 60,
+                  "height": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rGe3j",
+          "name": "Category Grid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            40,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "TPRcI",
+              "name": "Top Row",
+              "width": "fill_container",
+              "height": 400,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ilbgi",
+                  "name": "Shows",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 2,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZFY1h",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Shows Img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "justalifein",
+                        "link": "https://unsplash.com/@justalifein",
+                        "author": "Ruben Mavarez"
+                      },
+                      "width": 800,
+                      "height": 400,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1759938627337-d854962adb53?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WwI6o",
+                      "x": 0,
+                      "y": 0,
+                      "name": "cat1overlay",
+                      "width": 800,
+                      "height": 400,
+                      "fill": "#25294580",
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        32,
+                        32,
+                        32
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "boqhL",
+                          "name": "cat1label",
+                          "fill": "#f9f0f1",
+                          "content": "SHOWS",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "5hzwG",
+                          "name": "cat1count",
+                          "fill": "#f9f0f180",
+                          "content": "48 Photos",
+                          "fontFamily": "Questrial",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wskaj",
+                  "name": "Motorsports",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 2,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "7ADMU",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Motorsports Img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "jjames25",
+                        "link": "https://unsplash.com/@jjames25",
+                        "author": "Jeff James"
+                      },
+                      "width": 800,
+                      "height": 400,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1766300073694-573de55fb2d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MDh8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wjbqM",
+                      "x": 0,
+                      "y": 0,
+                      "name": "cat2overlay",
+                      "width": 800,
+                      "height": 400,
+                      "fill": "#25294580",
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        32,
+                        32,
+                        32
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "G2GBS",
+                          "name": "cat2label",
+                          "fill": "#f9f0f1",
+                          "content": "MOTORSPORTS",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "UdIua",
+                          "name": "cat2count",
+                          "fill": "#f9f0f180",
+                          "content": "36 Photos",
+                          "fontFamily": "Questrial",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dgF1m",
+              "name": "Bottom Row",
+              "width": "fill_container",
+              "height": 400,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "N1PMy",
+                  "name": "Travel",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 2,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fqldy",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Travel Img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "junypr",
+                        "link": "https://unsplash.com/@junypr",
+                        "author": "Alex"
+                      },
+                      "width": 800,
+                      "height": 400,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1721429436213-afe8d3cac11d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "i6vyZ",
+                      "x": 0,
+                      "y": 0,
+                      "name": "cat3overlay",
+                      "width": 800,
+                      "height": 400,
+                      "fill": "#25294580",
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        32,
+                        32,
+                        32
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sen7N",
+                          "name": "cat3label",
+                          "fill": "#f9f0f1",
+                          "content": "TRAVEL",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "gsGob",
+                          "name": "cat3count",
+                          "fill": "#f9f0f180",
+                          "content": "72 Photos",
+                          "fontFamily": "Questrial",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bw5rg",
+                  "name": "Nature",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 2,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GINbe",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Nature Img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "pavlo_bodnar",
+                        "link": "https://unsplash.com/@pavlo_bodnar",
+                        "author": "Pavlo Bodnar"
+                      },
+                      "width": 800,
+                      "height": 400,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1689794407380-2acef2a85bce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MjF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uvflH",
+                      "x": 0,
+                      "y": 0,
+                      "name": "cat4overlay",
+                      "width": 800,
+                      "height": 400,
+                      "fill": "#25294580",
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        32,
+                        32,
+                        32
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "VmT1j",
+                          "name": "cat4label",
+                          "fill": "#f9f0f1",
+                          "content": "NATURE",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 6
+                        },
+                        {
+                          "type": "text",
+                          "id": "wemml",
+                          "name": "cat4count",
+                          "fill": "#f9f0f180",
+                          "content": "54 Photos",
+                          "fontFamily": "Questrial",
+                          "fontSize": 11,
+                          "fontWeight": "normal",
+                          "letterSpacing": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NfO85",
+          "name": "Featured Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": 60,
+          "children": [
+            {
+              "type": "text",
+              "id": "cNuub",
+              "name": "featLabel",
+              "fill": "#f9f0f150",
+              "content": "SELECTED WORK",
+              "fontFamily": "Questrial",
+              "fontSize": 12,
+              "fontWeight": "normal",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "UeoqV",
+              "name": "Featured Grid",
+              "width": "fill_container",
+              "height": 320,
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "aoOk2",
+                  "name": "Feat 1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "lgnwvr",
+                    "link": "https://unsplash.com/@lgnwvr",
+                    "author": "LOGAN WEAVER | @LGNWVR"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1580806198367-8a48da3fc949?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "u3YzU",
+                  "name": "Feat 2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "nattv",
+                    "link": "https://unsplash.com/@nattv",
+                    "author": "Nattipat Vesvarute"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1764053001013-3c62d760289b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 2
+                },
+                {
+                  "type": "frame",
+                  "id": "nQwRY",
+                  "name": "Feat 3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "chirvisuals",
+                    "link": "https://unsplash.com/@chirvisuals",
+                    "author": "Chirayu Sharma"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1698430184854-17aa542d247c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LLECn",
+          "name": "Divider",
+          "width": "fill_container",
+          "padding": [
+            0,
+            60
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "kfmeg",
+              "name": "divLine",
+              "fill": "#f9f0f110",
+              "width": "fill_container",
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ayzyc",
+          "name": "Footer",
+          "width": "fill_container",
+          "padding": [
+            40,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "7G7sk",
+              "name": "footLeft",
+              "fill": "#f9f0f1",
+              "content": "FRANCISCO PERALTA",
+              "fontFamily": "Questrial",
+              "fontSize": 14,
+              "fontWeight": "normal",
+              "letterSpacing": 4
+            },
+            {
+              "type": "frame",
+              "id": "ot8zq",
+              "name": "footSocials",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "HUaVY",
+                  "name": "social1",
+                  "fill": "#f9f0f160",
+                  "content": "INSTAGRAM",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "QScRu",
+                  "name": "social2",
+                  "fill": "#f9f0f160",
+                  "content": "BEHANCE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "HNzxS",
+                  "name": "social3",
+                  "fill": "#f9f0f160",
+                  "content": "EMAIL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "Kcm6X",
+              "name": "footRight",
+              "fill": "#f9f0f140",
+              "content": "2026",
+              "fontFamily": "Questrial",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "RaSAz",
+      "x": 1600,
+      "y": 0,
+      "name": "Concept B - Light Mosaic",
+      "clip": true,
+      "width": 1440,
+      "fill": "#f9f0f1",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "2P8Ol",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            24,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Eqdfr",
+              "name": "logoB",
+              "fill": "#252945",
+              "content": "FP.",
+              "fontFamily": "Questrial",
+              "fontSize": 28,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "cQ9f6",
+              "name": "navB",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GCnvt",
+                  "name": "navB1",
+                  "fill": "#252945",
+                  "content": "WORK",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "gW0Es",
+                  "name": "navB2",
+                  "fill": "#25294560",
+                  "content": "ABOUT",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "22coJ",
+                  "name": "navB3",
+                  "fill": "#25294560",
+                  "content": "CONTACT",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "4lqkr",
+          "name": "Intro",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            60,
+            60,
+            20,
+            60
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "cKHyL",
+              "name": "introName",
+              "fill": "#252945",
+              "content": "Francisco Peralta",
+              "fontFamily": "Questrial",
+              "fontSize": 56,
+              "fontWeight": "normal",
+              "letterSpacing": -1
+            },
+            {
+              "type": "rectangle",
+              "id": "r3hWW",
+              "name": "introDash",
+              "fill": "#252945",
+              "width": 40,
+              "height": 2
+            },
+            {
+              "type": "text",
+              "id": "h6Vww",
+              "name": "introTag",
+              "fill": "#25294570",
+              "content": "Shows / Motorsports / Travel / Nature",
+              "fontFamily": "Questrial",
+              "fontSize": 14,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "uZKfx",
+          "name": "Bento Grid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            20,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "tMOS9",
+              "name": "Row 1",
+              "width": "fill_container",
+              "height": 460,
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "T9MEd",
+                  "name": "Concert Wide",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 3,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kbJo4",
+                      "x": 0,
+                      "y": 0,
+                      "name": "r1c1img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "eduardobal",
+                        "link": "https://unsplash.com/@eduardobal",
+                        "author": "Eduardo Balderas"
+                      },
+                      "width": 900,
+                      "height": 460,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1469510360132-9fa6abcd9df0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2NzZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gLFmu",
+                      "x": 20,
+                      "y": 20,
+                      "name": "r1c1tag",
+                      "fill": "#252945",
+                      "cornerRadius": 2,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zggUl",
+                          "name": "r1c1tagTxt",
+                          "fill": "#f9f0f1",
+                          "content": "SHOWS",
+                          "fontFamily": "Questrial",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5nX6t",
+                  "name": "Right Stack",
+                  "width": 420,
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wbO3f",
+                      "name": "Car Close",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "cornerRadius": 3,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "55OFl",
+                          "x": 0,
+                          "y": 0,
+                          "name": "r1c2aImg",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "philipmyr",
+                            "link": "https://unsplash.com/@philipmyr",
+                            "author": "Philip Myrtorp"
+                          },
+                          "width": 420,
+                          "height": 227,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1610019080778-471083eb5965?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2Nzd8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "brYZ5",
+                          "x": 20,
+                          "y": 20,
+                          "name": "r1c2aTag",
+                          "fill": "#252945",
+                          "cornerRadius": 2,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Tc3zf",
+                              "name": "r1c2aTagTxt",
+                              "fill": "#f9f0f1",
+                              "content": "MOTORSPORTS",
+                              "fontFamily": "Questrial",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 2
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wizIU",
+                      "name": "Mountain",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "cornerRadius": 3,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Vg0YD",
+                          "x": 0,
+                          "y": 0,
+                          "name": "r1c2bImg",
+                          "metadata": {
+                            "type": "unsplash",
+                            "username": "jaydekeroi",
+                            "link": "https://unsplash.com/@jaydekeroi",
+                            "author": "Jayde Keroi"
+                          },
+                          "width": 420,
+                          "height": 227,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "https://images.unsplash.com/photo-1761566565108-61bec5a45d75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2ODR8&ixlib=rb-4.1.0&q=80&w=1080",
+                            "mode": "fill"
+                          }
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7ksmb",
+                          "x": 20,
+                          "y": 20,
+                          "name": "r1c2bTag",
+                          "fill": "#252945",
+                          "cornerRadius": 2,
+                          "padding": [
+                            6,
+                            12
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "RJopu",
+                              "name": "r1c2bTagTxt",
+                              "fill": "#f9f0f1",
+                              "content": "TRAVEL",
+                              "fontFamily": "Questrial",
+                              "fontSize": 10,
+                              "fontWeight": "normal",
+                              "letterSpacing": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KI4TE",
+              "name": "Row 2",
+              "width": "fill_container",
+              "height": 340,
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gEZAE",
+                  "name": "Nature Tall",
+                  "clip": true,
+                  "width": 420,
+                  "height": "fill_container",
+                  "cornerRadius": 3,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "l261F",
+                      "x": 0,
+                      "y": 0,
+                      "name": "r2c1img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "hdbernd",
+                        "link": "https://unsplash.com/@hdbernd",
+                        "author": "Bernd 📷 Dittrich"
+                      },
+                      "width": 420,
+                      "height": 340,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1728145739547-0d112817d874?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2OTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fPRK5",
+                      "x": 20,
+                      "y": 20,
+                      "name": "r2c1tag",
+                      "fill": "#252945",
+                      "cornerRadius": 2,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "RUtwj",
+                          "name": "r2c1tagTxt",
+                          "fill": "#f9f0f1",
+                          "content": "NATURE",
+                          "fontFamily": "Questrial",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bALwd",
+                  "name": "Shows Wide 2",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "cornerRadius": 3,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KvBRR",
+                      "x": 0,
+                      "y": 0,
+                      "name": "r2c2img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "matnapo",
+                        "link": "https://unsplash.com/@matnapo",
+                        "author": "Mathurin NAPOLY / matnapo"
+                      },
+                      "width": 900,
+                      "height": 340,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1656401747905-a7fde47b3237?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg2OTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SmLHD",
+                      "x": 20,
+                      "y": 20,
+                      "name": "r2c2tag",
+                      "fill": "#252945",
+                      "cornerRadius": 2,
+                      "padding": [
+                        6,
+                        12
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Gf6kw",
+                          "name": "r2c2tagTxt",
+                          "fill": "#f9f0f1",
+                          "content": "SHOWS",
+                          "fontFamily": "Questrial",
+                          "fontSize": 10,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "X3LjA",
+              "name": "Row 3",
+              "width": "fill_container",
+              "height": 340,
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "4grfh",
+                  "name": "Motorsport 2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "ken_memoriesinfinity",
+                    "link": "https://unsplash.com/@ken_memoriesinfinity",
+                    "author": "Ken So"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1761092993026-b3a416b2da0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg3MDB8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "B4sP8",
+                  "name": "Temple Travel",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "snowscat",
+                    "link": "https://unsplash.com/@snowscat",
+                    "author": "Snowscat"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1570514858297-2c4990982f66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg3MDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "LoYpF",
+                  "name": "Forest Nature",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "fahadzyl",
+                    "link": "https://unsplash.com/@fahadzyl",
+                    "author": "A.T.M. Arafath Ali"
+                  },
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1761374985788-05b0d69689dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzg3MDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xqMnu",
+          "name": "About Strip",
+          "width": "fill_container",
+          "gap": 60,
+          "padding": 60,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "7xq4R",
+              "name": "aboutLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MMFrY",
+                  "name": "aboutLabel",
+                  "fill": "#25294550",
+                  "content": "ABOUT",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "klbq5",
+                  "name": "aboutText",
+                  "fill": "#252945",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Capturing moments across stages, tracks, and landscapes. Based in Latin America, shooting worldwide.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Questrial",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KWHmT",
+              "name": "aboutRight",
+              "layout": "vertical",
+              "gap": 20,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "xk3Ot",
+                  "name": "aboutStat1",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "19M4Q",
+                      "name": "stat1num",
+                      "fill": "#252945",
+                      "content": "210+",
+                      "fontFamily": "Questrial",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -1
+                    },
+                    {
+                      "type": "text",
+                      "id": "cChqm",
+                      "name": "stat1label",
+                      "fill": "#25294550",
+                      "content": "PHOTOS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 3
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MPi78",
+                  "name": "aboutStat2",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5Sxw6",
+                      "name": "stat2num",
+                      "fill": "#252945",
+                      "content": "4",
+                      "fontFamily": "Questrial",
+                      "fontSize": 36,
+                      "fontWeight": "normal",
+                      "letterSpacing": -1
+                    },
+                    {
+                      "type": "text",
+                      "id": "d6DVh",
+                      "name": "stat2label",
+                      "fill": "#25294550",
+                      "content": "CATEGORIES",
+                      "fontFamily": "Questrial",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "5VUIM",
+          "name": "Divider B",
+          "width": "fill_container",
+          "padding": [
+            0,
+            60
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "GlXdk",
+              "name": "footDivLine",
+              "fill": "#25294515",
+              "width": "fill_container",
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oP8KS",
+          "name": "Footer B",
+          "width": "fill_container",
+          "padding": [
+            32,
+            60,
+            40,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "95Vy5",
+              "name": "footBLeft",
+              "fill": "#252945",
+              "content": "FP.",
+              "fontFamily": "Questrial",
+              "fontSize": 20,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            },
+            {
+              "type": "frame",
+              "id": "BDjzM",
+              "name": "footBCenter",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6apMk",
+                  "name": "footBS1",
+                  "fill": "#25294560",
+                  "content": "INSTAGRAM",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "wXAiD",
+                  "name": "footBS2",
+                  "fill": "#25294560",
+                  "content": "BEHANCE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "y6XV4",
+                  "name": "footBS3",
+                  "fill": "#25294560",
+                  "content": "EMAIL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "252Ww",
+              "name": "footBRight",
+              "fill": "#25294540",
+              "content": "2026 All Rights Reserved",
+              "fontFamily": "Questrial",
+              "fontSize": 10,
+              "fontWeight": "normal",
+              "letterSpacing": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "oRT8m",
+      "x": 3140,
+      "y": 0,
+      "name": "Concept C - Dark Editorial",
+      "clip": true,
+      "width": 1440,
+      "fill": "#252945",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "6TMc4",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            20,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Lu3l6",
+              "name": "logoArea",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wYTdB",
+                  "name": "Logo",
+                  "width": 32,
+                  "height": 32,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/F.png",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "3y4B3",
+                  "name": "logoName",
+                  "fill": "#f9f0f1",
+                  "content": "FRANCISCO PERALTA",
+                  "fontFamily": "Questrial",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NYj25",
+              "name": "navC",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "9wp5m",
+                  "name": "navC1",
+                  "fill": "#f9f0f170",
+                  "content": "SHOWS",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "rAsV8",
+                  "name": "navC2",
+                  "fill": "#f9f0f170",
+                  "content": "MOTORSPORTS",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "3Y0OA",
+                  "name": "navC3",
+                  "fill": "#f9f0f170",
+                  "content": "TRAVEL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "LWozV",
+                  "name": "navC4",
+                  "fill": "#f9f0f170",
+                  "content": "NATURE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "q9PS8",
+                  "name": "navC5",
+                  "fill": "#f9f0f1",
+                  "content": "CONTACT",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "d7e6S",
+          "name": "Hero Split",
+          "width": "fill_container",
+          "height": 600,
+          "children": [
+            {
+              "type": "frame",
+              "id": "E3Tno",
+              "name": "Hero Text",
+              "width": 500,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                0,
+                60
+              ],
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "PLbE5",
+                  "name": "heroTag",
+                  "fill": "#f9f0f140",
+                  "content": "PHOTOGRAPHER",
+                  "fontFamily": "Questrial",
+                  "fontSize": 11,
+                  "fontWeight": "normal",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "text",
+                  "id": "mt1P8",
+                  "name": "heroTitle",
+                  "fill": "#f9f0f1",
+                  "content": "Capturing\nthe raw\nmoment.",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Questrial",
+                  "fontSize": 52,
+                  "fontWeight": "normal",
+                  "letterSpacing": -0.5
+                },
+                {
+                  "type": "rectangle",
+                  "id": "mTJpI",
+                  "name": "heroDash",
+                  "fill": "#f9f0f130",
+                  "width": 40,
+                  "height": 2
+                },
+                {
+                  "type": "text",
+                  "id": "po9lz",
+                  "name": "heroDesc",
+                  "fill": "#f9f0f150",
+                  "content": "Shows / Motorsports / Travel / Nature",
+                  "fontFamily": "Questrial",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Tbd2M",
+              "name": "Hero Photo",
+              "metadata": {
+                "type": "unsplash",
+                "username": "ramyloaiza",
+                "link": "https://unsplash.com/@ramyloaiza",
+                "author": "Ramy Loaiza"
+              },
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1761875002732-5140ada50d2a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkwODR8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "e8QZ4",
+          "name": "Category Grid",
+          "width": "fill_container",
+          "height": 320,
+          "gap": 8,
+          "padding": [
+            30,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "LugDC",
+              "name": "Motorsports",
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": 2,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8jPhu",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Motorsports Img",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "tiago_f_ferreira",
+                    "link": "https://unsplash.com/@tiago_f_ferreira",
+                    "author": "Tiago Ferreira"
+                  },
+                  "width": 700,
+                  "height": 260,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1746970523164-805de3e74c44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkyNjh8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "Zi3ii",
+                  "x": 0,
+                  "y": 0,
+                  "name": "catMotorOv",
+                  "width": 700,
+                  "height": 260,
+                  "fill": "#25294560",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    0,
+                    24,
+                    24,
+                    24
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tDTtC",
+                      "name": "catMotorLbl",
+                      "fill": "#f9f0f1",
+                      "content": "MOTORSPORTS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": 6
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "L8BO2",
+              "name": "Shows",
+              "clip": true,
+              "width": "fill_container",
+              "height": "fill_container",
+              "cornerRadius": 2,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "9YQ6S",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Shows Img",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "ummmmpaul",
+                    "link": "https://unsplash.com/@ummmmpaul",
+                    "author": "Paul Chambers"
+                  },
+                  "width": 700,
+                  "height": 260,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1567105800714-0106cfd63b55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkyNjF8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "EgGUP",
+                  "x": 0,
+                  "y": 0,
+                  "name": "catShowsOv",
+                  "width": 700,
+                  "height": 260,
+                  "fill": "#25294560",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "padding": [
+                    0,
+                    24,
+                    24,
+                    24
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4GZ3N",
+                      "name": "catShowsLbl",
+                      "fill": "#f9f0f1",
+                      "content": "SHOWS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": 6
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ii42H",
+          "name": "Gallery Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            50,
+            60,
+            20,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nbS0S",
+              "name": "Filters",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "IU5rM",
+                  "name": "fAll",
+                  "fill": "#f9f0f1",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mw5Le",
+                      "name": "fAllTxt",
+                      "fill": "#252945",
+                      "content": "ALL",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sZO0p",
+                  "name": "fMotor",
+                  "fill": "#f9f0f110",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lujPP",
+                      "name": "fMotorTxt",
+                      "fill": "#f9f0f160",
+                      "content": "MOTORSPORTS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "E63EJ",
+                  "name": "fShows",
+                  "fill": "#f9f0f110",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ekBi8",
+                      "name": "fShowsTxt",
+                      "fill": "#f9f0f160",
+                      "content": "SHOWS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TRFQS",
+                  "name": "fTravel",
+                  "fill": "#f9f0f110",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AP0Te",
+                      "name": "fTravelTxt",
+                      "fill": "#f9f0f160",
+                      "content": "TRAVEL",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Sekly",
+                  "name": "fNature",
+                  "fill": "#f9f0f110",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hquIx",
+                      "name": "fNatureTxt",
+                      "fill": "#f9f0f160",
+                      "content": "NATURE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "5SZCI",
+                  "name": "fPeople",
+                  "fill": "#f9f0f110",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    20
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rXCJG",
+                      "name": "fPeopleTxt",
+                      "fill": "#f9f0f160",
+                      "content": "PEOPLE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KQmjF",
+              "name": "Masonry Grid",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VjtiK",
+                  "name": "Col 1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "RL9Bc",
+                      "name": "Concert 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "rombo_guitar_picks",
+                        "link": "https://unsplash.com/@rombo_guitar_picks",
+                        "author": "Rombo"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 480,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1666528422145-ed506aa560ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AeNrj",
+                      "name": "Landscape 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "ukprajapati",
+                        "link": "https://unsplash.com/@ukprajapati",
+                        "author": "Urvish Oza"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1771092022621-cfac92445f83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "zgTC5",
+                      "name": "Racing 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "alexander_ediker",
+                        "link": "https://unsplash.com/@alexander_ediker",
+                        "author": "Alexander Ediker"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 360,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1738425564246-f8204b3ce63e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Yi555",
+                  "name": "Col 2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "JXvgz",
+                      "name": "Nature 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "skylerewing",
+                        "link": "https://unsplash.com/@skylerewing",
+                        "author": "Skyler Ewing"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 320,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1652542572877-f802d77fea8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "weYYS",
+                      "name": "Concert 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "henmankk",
+                        "link": "https://unsplash.com/@henmankk",
+                        "author": "Keagan Henman"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 440,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1696946909335-95504ffd8bda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LSlFL",
+                      "name": "Travel 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "katebranch",
+                        "link": "https://unsplash.com/@katebranch",
+                        "author": "Kate Branch"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 360,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1668392297032-ad2d437fb609?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UpBZh",
+                  "name": "Col 3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "nPsbT",
+                      "name": "Motorsport 3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "saulbanderaxi",
+                        "link": "https://unsplash.com/@saulbanderaxi",
+                        "author": "Saul Brotheridge"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 380,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1738868191453-e3dec0a394e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AHEXx",
+                      "name": "Nature 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "marinabaranova",
+                        "link": "https://unsplash.com/@marinabaranova",
+                        "author": "Marina Baranova"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1759395068963-4d723ceff498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ZFOlJ",
+                      "name": "Shows 3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "jhany",
+                        "link": "https://unsplash.com/@jhany",
+                        "author": "JHANY BLUE"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 440,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1746956774048-c9eb9765de58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3mJG5",
+          "name": "Load More",
+          "width": "fill_container",
+          "padding": [
+            40,
+            60
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ixNVv",
+              "name": "loadBtn",
+              "cornerRadius": 2,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#f9f0f130"
+              },
+              "padding": [
+                12,
+                40
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZeGiP",
+                  "name": "loadTxt",
+                  "fill": "#f9f0f180",
+                  "content": "VIEW MORE WORK",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HJYi5",
+          "name": "Divider",
+          "width": "fill_container",
+          "padding": [
+            0,
+            60
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "WzJrS",
+              "name": "divLineC",
+              "fill": "#f9f0f110",
+              "width": "fill_container",
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "70ok1",
+          "name": "Footer",
+          "width": "fill_container",
+          "padding": [
+            32,
+            60,
+            40,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TlSmW",
+              "name": "footLogoC",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QKr7V",
+                  "name": "Footer Logo",
+                  "width": 24,
+                  "height": 24,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/F.png",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "ZFHcY",
+                  "name": "footNameC",
+                  "fill": "#f9f0f1",
+                  "content": "FRANCISCO PERALTA",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nOrZM",
+              "name": "footSocC",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "huQVG",
+                  "name": "fSoc1",
+                  "fill": "#f9f0f160",
+                  "content": "INSTAGRAM",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "Fw11B",
+                  "name": "fSoc2",
+                  "fill": "#f9f0f160",
+                  "content": "BEHANCE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "uNyeE",
+                  "name": "fSoc3",
+                  "fill": "#f9f0f160",
+                  "content": "EMAIL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "JS4SZ",
+              "name": "footYearC",
+              "fill": "#f9f0f140",
+              "content": "2026",
+              "fontFamily": "Questrial",
+              "fontSize": 10,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "1OFby",
+      "x": 4680,
+      "y": 0,
+      "name": "Concept D - Editorial",
+      "clip": true,
+      "width": 1440,
+      "fill": "#1c1f33",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "kYu68",
+          "name": "Header",
+          "width": "fill_container",
+          "padding": [
+            28,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "iWXgh",
+              "name": "logoAreaD",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "L4vnx",
+                  "name": "Logo",
+                  "width": 36,
+                  "height": 36,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/F.svg",
+                    "mode": "fill"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vinfj",
+              "name": "navAreaD",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jgC5p",
+                  "name": "navLinks",
+                  "gap": 24,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gsFZr",
+                      "name": "nl1",
+                      "fill": "#f9f0f170",
+                      "content": "MOTORSPORTS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "xcsqq",
+                      "name": "nl2",
+                      "fill": "#f9f0f170",
+                      "content": "SHOWS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "NN6cH",
+                      "name": "nl3",
+                      "fill": "#f9f0f170",
+                      "content": "TRAVEL",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "Myn8v",
+                      "name": "nl4",
+                      "fill": "#f9f0f170",
+                      "content": "NATURE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "guvwQ",
+                      "name": "nl5",
+                      "fill": "#f9f0f170",
+                      "content": "PEOPLE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MGklP",
+                  "name": "navSep",
+                  "width": 1,
+                  "height": 32,
+                  "fill": "#f9f0f120"
+                },
+                {
+                  "type": "frame",
+                  "id": "5OdW3",
+                  "name": "contactD",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HtcYI",
+                      "name": "contactLabel",
+                      "fill": "#f9f0f1",
+                      "content": "Contact",
+                      "fontFamily": "Questrial",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "a4MSH",
+                      "name": "contactEmail",
+                      "fill": "#f9f0f150",
+                      "content": "hello@franciscoperalta.com",
+                      "fontFamily": "Questrial",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "Oh1p9",
+                      "name": "igLink",
+                      "fill": "#f9f0f150",
+                      "content": "@franmper",
+                      "fontFamily": "Questrial",
+                      "fontSize": 10,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.5
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ayjEz",
+          "name": "Title Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            30,
+            60,
+            20,
+            60
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "YeYR1",
+              "name": "titleLabel",
+              "fill": "#f9f0f140",
+              "content": "PORTFOLIO 2026",
+              "fontFamily": "Questrial",
+              "fontSize": 11,
+              "fontWeight": "normal",
+              "letterSpacing": 3
+            },
+            {
+              "type": "frame",
+              "id": "Pmdx5",
+              "name": "titleName",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WkQfc",
+                  "name": "titleFirst",
+                  "fill": "#f9f0f1",
+                  "content": "FRANCISCO",
+                  "fontFamily": "Questrial",
+                  "fontSize": 48,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "UrgUA",
+                  "name": "titleLast",
+                  "fill": "#f9f0f1",
+                  "content": "PERALTA",
+                  "fontFamily": "Questrial",
+                  "fontSize": 48,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fBWuF",
+          "name": "Category Photos",
+          "width": "fill_container",
+          "height": 580,
+          "gap": 12,
+          "padding": [
+            10,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "j8zaX",
+              "name": "Motorsports Photo",
+              "clip": true,
+              "width": 719,
+              "height": "fill_container",
+              "cornerRadius": 3,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "sWsuX",
+                  "x": 0,
+                  "y": 0,
+                  "name": "photo1img",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "mcyce",
+                    "link": "https://unsplash.com/@mcyce",
+                    "author": "Mert Yüce"
+                  },
+                  "width": 719,
+                  "height": 580,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1729882892770-15186a1a9d44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzk4MjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "xkbnm",
+                  "x": 0,
+                  "y": 0,
+                  "name": "photo1overlay",
+                  "width": 719,
+                  "height": 560,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 180,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#00000000",
+                        "position": 0.4
+                      },
+                      {
+                        "color": "#000000BB",
+                        "position": 0.9
+                      }
+                    ]
+                  },
+                  "layout": "vertical",
+                  "padding": [
+                    0,
+                    24,
+                    28,
+                    24
+                  ],
+                  "justifyContent": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IjCyf",
+                      "name": "photo1label",
+                      "fill": "#f9f0f1",
+                      "content": "motorsports",
+                      "fontFamily": "Questrial",
+                      "fontSize": 28,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "48kGY",
+              "name": "Right Column",
+              "width": 589,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zLR6u",
+                  "name": "Shows Photo",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 330,
+                  "cornerRadius": 3,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "RxIbR",
+                      "x": 0,
+                      "y": 0,
+                      "name": "photo2img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "robertarnar",
+                        "link": "https://unsplash.com/@robertarnar",
+                        "author": "Robert Arnar"
+                      },
+                      "width": 589,
+                      "height": 330,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1694720322566-f769f720de49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzk4MzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "re40s",
+                      "x": 0,
+                      "y": 0,
+                      "name": "photo2overlay",
+                      "width": 589,
+                      "height": 330,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#00000000",
+                            "position": 0.4
+                          },
+                          {
+                            "color": "#000000BB",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        24,
+                        28,
+                        24
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ugk9f",
+                          "name": "photo2label",
+                          "fill": "#f9f0f1",
+                          "content": "shows",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "2RYi9",
+                  "name": "Travel Photo",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 218,
+                  "cornerRadius": 3,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KYnKE",
+                      "x": 0,
+                      "y": 0,
+                      "name": "photo3img",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "jesseschoff",
+                        "link": "https://unsplash.com/@jesseschoff",
+                        "author": "Jesse Schoff"
+                      },
+                      "width": 589,
+                      "height": 218,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1556199859-0a5f16d962a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2Nzk4MzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XScCW",
+                      "x": 0,
+                      "y": 0,
+                      "name": "photo3overlay",
+                      "width": 589,
+                      "height": 218,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#00000000",
+                            "position": 0.4
+                          },
+                          {
+                            "color": "#000000BB",
+                            "position": 0.9
+                          }
+                        ]
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        24,
+                        28,
+                        24
+                      ],
+                      "justifyContent": "end",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "K8ptG",
+                          "name": "photo3label",
+                          "fill": "#f9f0f1",
+                          "content": "travel",
+                          "fontFamily": "Questrial",
+                          "fontSize": 28,
+                          "fontWeight": "normal",
+                          "letterSpacing": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "9VWYT",
+          "name": "galCopy",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            50,
+            60,
+            20,
+            60
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "asfam",
+              "name": "Filters",
+              "width": "fill_container",
+              "gap": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "3eSkP",
+                  "name": "fAll",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wdGko",
+                      "name": "fAllTxt",
+                      "fill": "#f9f0f1",
+                      "content": "ALL",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4WWdZ",
+                  "name": "fMotor",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gPuky",
+                      "name": "fMotorTxt",
+                      "fill": "#f9f0f160",
+                      "content": "MOTORSPORTS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tdVlF",
+                  "name": "fShows",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "H7ajG",
+                      "name": "fShowsTxt",
+                      "fill": "#f9f0f160",
+                      "content": "SHOWS",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lcTmz",
+                  "name": "fTravel",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TTkXh",
+                      "name": "fTravelTxt",
+                      "fill": "#f9f0f160",
+                      "content": "TRAVEL",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IyvoO",
+                  "name": "fNature",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZYWtV",
+                      "name": "fNatureTxt",
+                      "fill": "#f9f0f160",
+                      "content": "NATURE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "8LCny",
+                  "name": "fPeople",
+                  "fill": "#00000000",
+                  "cornerRadius": 2,
+                  "padding": [
+                    8,
+                    12
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4v6sT",
+                      "name": "fPeopleTxt",
+                      "fill": "#f9f0f160",
+                      "content": "PEOPLE",
+                      "fontFamily": "Questrial",
+                      "fontSize": 11,
+                      "fontWeight": "normal",
+                      "letterSpacing": 2
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aUai6",
+              "name": "Masonry Grid",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "2WEg7",
+                  "name": "Col 1",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KtVMT",
+                      "name": "Concert 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "rombo_guitar_picks",
+                        "link": "https://unsplash.com/@rombo_guitar_picks",
+                        "author": "Rombo"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 480,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1666528422145-ed506aa560ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "A2ppF",
+                      "name": "Landscape 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "ukprajapati",
+                        "link": "https://unsplash.com/@ukprajapati",
+                        "author": "Urvish Oza"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 280,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1771092022621-cfac92445f83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CeA8P",
+                      "name": "Racing 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "alexander_ediker",
+                        "link": "https://unsplash.com/@alexander_ediker",
+                        "author": "Alexander Ediker"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 360,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1738425564246-f8204b3ce63e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iyFTq",
+                  "name": "Col 2",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rDPBk",
+                      "name": "Nature 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "skylerewing",
+                        "link": "https://unsplash.com/@skylerewing",
+                        "author": "Skyler Ewing"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 320,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1652542572877-f802d77fea8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vi2Rn",
+                      "name": "Concert 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "henmankk",
+                        "link": "https://unsplash.com/@henmankk",
+                        "author": "Keagan Henman"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 440,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1696946909335-95504ffd8bda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMDR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1FrgF",
+                      "name": "Travel 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "katebranch",
+                        "link": "https://unsplash.com/@katebranch",
+                        "author": "Kate Branch"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 360,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1668392297032-ad2d437fb609?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "7zGE1",
+                  "name": "Col 3",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "G9OQz",
+                      "name": "Motorsport 3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "saulbanderaxi",
+                        "link": "https://unsplash.com/@saulbanderaxi",
+                        "author": "Saul Brotheridge"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 380,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1738868191453-e3dec0a394e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "puEWU",
+                      "name": "Nature 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "marinabaranova",
+                        "link": "https://unsplash.com/@marinabaranova",
+                        "author": "Marina Baranova"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1759395068963-4d723ceff498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OfBtM",
+                      "name": "Shows 3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "jhany",
+                        "link": "https://unsplash.com/@jhany",
+                        "author": "JHANY BLUE"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 440,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1746956774048-c9eb9765de58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzE2NzkxMTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 2
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CYZ8E",
+          "name": "loadCopy",
+          "width": "fill_container",
+          "padding": [
+            40,
+            60
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "GceiJ",
+              "name": "loadBtn",
+              "cornerRadius": 2,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#f9f0f130"
+              },
+              "padding": [
+                12,
+                40
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MNldo",
+                  "name": "loadTxt",
+                  "fill": "#f9f0f180",
+                  "content": "VIEW MORE WORK",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2QzhB",
+          "name": "divCopy",
+          "width": "fill_container",
+          "padding": [
+            0,
+            60
+          ],
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "F6Hcv",
+              "name": "divLineC",
+              "fill": "#f9f0f110",
+              "width": "fill_container",
+              "height": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "BdN6m",
+          "name": "footCopy",
+          "width": "fill_container",
+          "padding": [
+            32,
+            60,
+            40,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "avdWR",
+              "name": "footLogoC",
+              "gap": 14,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v5cQW",
+                  "name": "Footer Logo",
+                  "width": 24,
+                  "height": 24,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./images/F.svg",
+                    "mode": "fill"
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "44nqM",
+                  "name": "footNameC",
+                  "fill": "#f9f0f1",
+                  "content": "FRANCISCO PERALTA",
+                  "fontFamily": "Questrial",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "letterSpacing": 3
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "9hte1",
+              "name": "footSocC",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "e993v",
+                  "name": "fSoc1",
+                  "fill": "#f9f0f160",
+                  "content": "INSTAGRAM",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "S8T9e",
+                  "name": "fSoc2",
+                  "fill": "#f9f0f160",
+                  "content": "BEHANCE",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "VA15H",
+                  "name": "fSoc3",
+                  "fill": "#f9f0f160",
+                  "content": "EMAIL",
+                  "fontFamily": "Questrial",
+                  "fontSize": 10,
+                  "fontWeight": "normal",
+                  "letterSpacing": 2
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "c7WHC",
+              "name": "footYearC",
+              "fill": "#f9f0f140",
+              "content": "2026",
+              "fontFamily": "Questrial",
+              "fontSize": 10,
+              "fontWeight": "normal",
+              "letterSpacing": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
