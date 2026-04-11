@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import HeroTitle from "../components/HeroTitle.astro";
 import HeroGrid from "../components/HeroGrid.astro";
 import Gallery from "../components/Gallery";
+import ShopCta from "../components/ShopCta.astro";
 import Footer from "../components/Footer.astro";
 import { client } from "../lib/sanity/client";
 import { urlFor } from "../lib/sanity/client";
@@ -61,6 +62,7 @@ const description = settings?.seoDescription || undefined;
     <HeroTitle />
     <HeroGrid photos={heroPhotos} />
     <Gallery client:visible photos={galleryItems} categories={categoryNames} />
+    <ShopCta />
     <Footer />
   </main>
 </Layout>
