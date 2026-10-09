@@ -1,49 +1,77 @@
 ---
-const categories = ["MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
+import type { CategoryRef, SiteSettings } from "../lib/sanity/types";
+
+interface Props {
+  settings: SiteSettings;
+  categories: CategoryRef[];
+  hasProjects: boolean;
+  hasPress: boolean;
+}
+
+const { settings, categories, hasProjects, hasPress } = Astro.props;
+const links = [
+  ...categories.map((c) => ({ label: c.name, href: `/?c=${c.slug}#gallery`, filter: c.slug })),
+  ...(hasProjects ? [{ label: "Projects", href: "/#projects", filter: undefined }] : []),
+  ...(hasPress ? [{ label: "Press", href: "/#press", filter: undefined }] : []),
+];
 ---
 
 <header class="flex items-center justify-between px-[60px] py-7 max-w-[1440px] mx-auto w-full max-lg:px-6 max-md:py-4">
   <a href="/" class="shrink-0">
-    <img src="/images/F.svg" alt="Francisco Peralta" width="36" height="36" />
+    <img src="/images/F.svg" alt={settings.name} width="36" height="36" />
   </a>
 
   <div class="flex items-center gap-6">
     <nav class="flex items-center gap-6 max-md:hidden">
-      {categories.map((cat) => (
+      {links.map((link) => (
         <a
-          href={`#gallery`}
-          data-filter={cat}
-          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors nav-filter"
+          href={link.href}
+          data-filter={link.filter}
+          class="text-[11px] tracking-[2px] uppercase text-text-70 hover:text-text transition-colors"
         >
-          {cat}
+          {link.label}
         </a>
       ))}
     </nav>
 
-    <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
+    {settings.shopUrl && (
+      <>
+        <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
+        <a
+          href={settings.shopUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors max-md:hidden"
+        >
+          TIENDA
+        </a>
+      </>
+    )}
 
-    <a
-      href="https://tutienda.mitiendanube.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors max-md:hidden"
-    >
-      TIENDA
-    </a>
-
-    <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
-
-    <div class="flex flex-col gap-0.5 max-md:hidden">
-      <span class="text-[13px] tracking-[1px] text-text">Contact</span>
-      <span class="text-[10px] tracking-[0.5px] text-text-50">hello@franciscoperalta.com</span>
-      <span class="text-[10px] tracking-[0.5px] text-text-50">@franmper</span>
-    </div>
+    {(settings.email || settings.instagram) && (
+      <>
+        <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
+        <div class="flex flex-col gap-0.5 max-md:hidden">
+          <span class="text-[13px] tracking-[1px] text-text">Contact</span>
+          {settings.email && (
+            <a href={`mailto:${settings.email}`} class="text-[10px] tracking-[0.5px] text-text-50 hover:text-text transition-colors">
+              {settings.email}
+            </a>
+          )}
+          {settings.instagram && (
+            <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" class="text-[10px] tracking-[0.5px] text-text-50 hover:text-text transition-colors">
+              {settings.instagram}
+            </a>
+          )}
+        </div>
+      </>
+    )}
 
     <!-- Mobile menu button -->
     <button id="mobile-menu-btn" class="hidden max-md:flex flex-col gap-[5px] p-1" aria-label="Menu">
-      <span class="block w-5 h-px bg-text transition-transform origin-center" id="bar1"></span>
-      <span class="block w-5 h-px bg-text transition-opacity" id="bar2"></span>
-      <span class="block w-5 h-px bg-text transition-transform origin-center" id="bar3"></span>
+      <span class="block w-5 h-px bg-text"></span>
+      <span class="block w-5 h-px bg-text"></span>
+      <span class="block w-5 h-px bg-text"></span>
     </button>
   </div>
 </header>
@@ -57,58 +85,55 @@ const categories = ["MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
     </svg>
   </button>
 
-  {categories.map((cat) => (
+  {links.map((link) => (
     <a
-      href="#gallery"
-      data-filter={cat}
-      class="text-[14px] tracking-[3px] text-text-70 hover:text-text transition-colors nav-filter mobile-nav-link"
+      href={link.href}
+      data-filter={link.filter}
+      class="text-[14px] tracking-[3px] uppercase text-text-70 hover:text-text transition-colors mobile-nav-link"
     >
-      {cat}
+      {link.label}
     </a>
   ))}
 
-  <a
-    href="https://tutienda.mitiendanube.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="text-[14px] tracking-[3px] text-text-70 hover:text-text transition-colors mobile-nav-link"
-  >
-    TIENDA
-  </a>
+  {settings.shopUrl && (
+    <a
+      href={settings.shopUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[14px] tracking-[3px] text-text-70 hover:text-text transition-colors mobile-nav-link"
+    >
+      TIENDA
+    </a>
+  )}
 
   <div class="w-12 h-px bg-text-10 mt-4"></div>
 
   <div class="flex flex-col items-center gap-2 mt-2">
-    <a href="mailto:hello@franciscoperalta.com" class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
-      EMAIL
-    </a>
-    <a href="https://instagram.com/franmper" target="_blank" rel="noopener noreferrer" class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
-      @FRANMPER
-    </a>
+    {settings.email && (
+      <a href={`mailto:${settings.email}`} class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
+        EMAIL
+      </a>
+    )}
+    {settings.instagram && (
+      <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] tracking-[2px] uppercase text-text-50 hover:text-text transition-colors">
+        {settings.instagram}
+      </a>
+    )}
   </div>
 </div>
 
 <script is:inline>
-  const menuBtn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const closeBtn = document.getElementById('mobile-menu-close');
 
-  function openMenu() {
-    menu.classList.remove('hidden');
-    menu.classList.add('flex');
-    document.body.style.overflow = 'hidden';
+  function setMenu(open) {
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  function closeMenu() {
-    menu.classList.add('hidden');
-    menu.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  menuBtn.addEventListener('click', openMenu);
-  closeBtn.addEventListener('click', closeMenu);
-
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => setMenu(true));
+  document.getElementById('mobile-menu-close').addEventListener('click', () => setMenu(false));
   document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-    link.addEventListener('click', () => closeMenu());
+    link.addEventListener('click', () => setMenu(false));
   });
 </script>

@@ -1,0 +1,45 @@
+---
+import { urlFor } from "../lib/sanity/client";
+import { srcSet } from "../lib/photos";
+import type { Project } from "../lib/sanity/types";
+
+interface Props {
+  projects: Project[];
+}
+
+const cards = Astro.props.projects
+  .map((p) => ({ project: p, cover: p.coverImage ?? p.photos[0] }))
+  .filter((c) => c.cover);
+---
+
+{cards.length > 0 && (
+  <section id="projects" class="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-10 max-lg:px-6 scroll-mt-6">
+    <h2 class="text-[11px] tracking-[3px] text-text-40 uppercase mb-6">Projects</h2>
+    <div class="grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      {cards.map(({ project, cover }) => (
+        <a href={`/projects/${project.slug}`} class="group flex flex-col gap-3">
+          <div
+            class="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-bg-light bg-cover bg-center"
+            style={cover.asset.metadata.lqip ? `background-image: url(${cover.asset.metadata.lqip})` : undefined}
+          >
+            <img
+              src={urlFor(cover).width(900).url()}
+              srcset={srcSet(cover, [500, 900, 1300])}
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              alt={cover.alt || project.name}
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              style={cover.hotspot ? `object-position: ${cover.hotspot.x * 100}% ${cover.hotspot.y * 100}%` : undefined}
+            />
+          </div>
+          <div class="flex items-baseline justify-between gap-4">
+            <span class="text-[14px] tracking-[2px] uppercase text-text">{project.name}</span>
+            <span class="text-[10px] tracking-[2px] uppercase text-text-50 shrink-0">
+              {[project.category?.name, project.date?.slice(0, 4)].filter(Boolean).join(" · ")}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

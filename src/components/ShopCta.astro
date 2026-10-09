@@ -1,30 +1,36 @@
 ---
+interface Props {
+  url?: string;
+}
 
+const { url } = Astro.props;
 ---
 
-<section class="max-w-[1440px] mx-auto w-full px-[60px] py-24 max-lg:px-6 max-md:py-16 fade-in">
-  <div class="flex items-center justify-between max-md:flex-col max-md:items-start max-md:gap-8">
-    <div class="flex flex-col gap-3">
-      <span class="text-[11px] tracking-[3px] text-text-40">CUADROS ENMARCADOS</span>
-      <h2 class="text-[28px] tracking-[1px] text-text max-md:text-[22px]">
-        Lleva una foto a tu pared
-      </h2>
-      <p class="text-[13px] leading-relaxed text-text-50 max-w-md">
-        Impresiones de alta calidad con marco, listas para colgar.
-        Varios tamaños disponibles.
-      </p>
-    </div>
+{url && (
+  <section class="max-w-[1440px] mx-auto w-full px-[60px] py-24 max-lg:px-6 max-md:py-16 fade-in">
+    <div class="flex items-center justify-between max-md:flex-col max-md:items-start max-md:gap-8">
+      <div class="flex flex-col gap-3">
+        <span class="text-[11px] tracking-[3px] text-text-40">CUADROS ENMARCADOS</span>
+        <h2 class="text-[28px] tracking-[1px] text-text max-md:text-[22px]">
+          Lleva una foto a tu pared
+        </h2>
+        <p class="text-[13px] leading-relaxed text-text-50 max-w-md">
+          Impresiones de alta calidad con marco, listas para colgar.
+          Varios tamaños disponibles.
+        </p>
+      </div>
 
-    <a
-      href="https://tutienda.mitiendanube.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center gap-3 border border-text-30 px-8 py-3.5 text-[11px] tracking-[3px] text-text hover:bg-text hover:text-bg transition-colors"
-    >
-      VER TIENDA
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
-        <path d="M1 7h12M8 2l5 5-5 5" />
-      </svg>
-    </a>
-  </div>
-</section>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 border border-text-30 px-8 py-3.5 text-[11px] tracking-[3px] text-text hover:bg-text hover:text-bg transition-colors"
+      >
+        VER TIENDA
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M1 7h12M8 2l5 5-5 5" />
+        </svg>
+      </a>
+    </div>
+  </section>
+)}

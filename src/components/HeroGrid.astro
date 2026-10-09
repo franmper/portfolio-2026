@@ -1,78 +1,61 @@
 ---
-interface HeroPhoto {
-  src: string;
-  label: string;
-  alt: string;
-}
+import { urlFor } from "../lib/sanity/client";
+import { srcSet } from "../lib/photos";
+import type { HeroItem } from "../lib/sanity/types";
 
 interface Props {
-  photos?: HeroPhoto[];
+  items: HeroItem[];
 }
 
-const defaultPhotos: HeroPhoto[] = [
-  { src: "https://images.unsplash.com/photo-1729882892770-15186a1a9d44?w=800&fit=max&auto=format", label: "motorsports", alt: "Motorsports photography" },
-  { src: "https://images.unsplash.com/photo-1694720322566-f769f720de49?w=600&fit=max&auto=format", label: "shows", alt: "Shows photography" },
-  { src: "https://images.unsplash.com/photo-1556199859-0a5f16d962a8?w=600&fit=max&auto=format", label: "travel", alt: "Travel photography" },
-];
+const tiles = Astro.props.items.slice(0, 3).map((item) => ({
+  src: urlFor(item.image).width(1200).url(),
+  srcSet: srcSet(item.image, [600, 1000, 1400, 2000]),
+  lqip: item.image.asset.metadata.lqip,
+  alt: item.image.alt || item.category.name,
+  label: item.category.name,
+  slug: item.category.slug,
+  hotspot: item.image.hotspot,
+}));
 
-const photos = Astro.props.photos || defaultPhotos;
+const [main, ...side] = tiles;
 ---
 
-<section class="flex gap-3 px-[60px] py-[10px] max-w-[1440px] mx-auto w-full h-[580px] max-lg:px-6 max-md:flex-col max-md:gap-2 max-md:h-auto fade-in fade-in-delay-1">
-  <!-- Left: Motorsports (55%) -->
-  <a
-    href="#gallery"
-    data-filter="MOTORSPORTS"
-    class="relative w-[55%] h-full overflow-hidden rounded-[3px] group nav-filter max-md:w-full max-md:h-[300px]"
-  >
-    <img
-      src={photos[0].src}
-      alt={photos[0].alt}
-      class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-      loading="eager"
-    />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
-    <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
-      {photos[0].label}
-    </span>
-  </a>
-
-  <!-- Right column: Shows (taller) + Travel (shorter) -->
-  <div class="flex flex-col gap-3 w-[45%] h-full max-md:w-full max-md:h-[400px]">
-    <!-- Shows (60%) -->
-    <a
-      href="#gallery"
-      data-filter="SHOWS"
-      class="relative flex-[1.5] overflow-hidden rounded-[3px] group nav-filter"
-    >
-      <img
-        src={photos[1].src}
-        alt={photos[1].alt}
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        loading="eager"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
-      <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
-        {photos[1].label}
-      </span>
-    </a>
-
-    <!-- Travel (40%) -->
-    <a
-      href="#gallery"
-      data-filter="TRAVEL"
-      class="relative flex-1 overflow-hidden rounded-[3px] group nav-filter"
-    >
-      <img
-        src={photos[2].src}
-        alt={photos[2].alt}
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        loading="eager"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
-      <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal">
-        {photos[2].label}
-      </span>
-    </a>
-  </div>
-</section>
+{main && (
+  <section class="flex gap-3 px-[60px] py-[10px] max-w-[1440px] mx-auto w-full h-[580px] max-lg:px-6 max-md:flex-col max-md:gap-2 max-md:h-auto fade-in fade-in-delay-1">
+    {[{ tiles: [main], main: true }, { tiles: side, main: false }]
+      .filter((group) => group.tiles.length > 0)
+      .map((group) => (
+        <div
+          class:list={[
+            "flex flex-col gap-3 h-full max-md:w-full max-md:gap-2",
+            side.length === 0 ? "w-full" : group.main ? "w-[55%]" : "w-[45%]",
+            group.main ? "max-md:h-[300px]" : side.length === 2 ? "max-md:h-[400px]" : "max-md:h-[250px]",
+          ]}
+        >
+          {group.tiles.map((tile, i) => (
+            <a
+              href={`/?c=${tile.slug}#gallery`}
+              data-filter={tile.slug}
+              class:list={["relative overflow-hidden rounded-[3px] group bg-bg-light bg-cover bg-center", i === 0 && !group.main ? "flex-[1.5]" : "flex-1"]}
+              style={tile.lqip ? `background-image: url(${tile.lqip})` : undefined}
+            >
+              <img
+                src={tile.src}
+                srcset={tile.srcSet}
+                sizes={group.main && side.length > 0 ? "(max-width: 767px) 100vw, 55vw" : "(max-width: 767px) 100vw, 45vw"}
+                alt={tile.alt}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                style={tile.hotspot ? `object-position: ${tile.hotspot.x * 100}% ${tile.hotspot.y * 100}%` : undefined}
+                loading="eager"
+                fetchpriority={group.main ? "high" : undefined}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/73 via-transparent to-transparent"></div>
+              <span class="absolute bottom-7 left-6 text-[28px] tracking-[2px] text-text font-normal lowercase">
+                {tile.label}
+              </span>
+            </a>
+          ))}
+        </div>
+      ))}
+  </section>
+)}

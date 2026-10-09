@@ -1,6 +1,7 @@
+import photo from "./objects/photo";
 import category from "./category";
-import photo from "./photo";
 import project from "./project";
+import press from "./press";
 import siteSettings from "./siteSettings";
 
-export const schemaTypes = [category, photo, project, siteSettings];
+export const schemaTypes = [photo, category, project, press, siteSettings];

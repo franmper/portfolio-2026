@@ -1,162 +1,171 @@
-import { useState, useMemo, useRef, useEffect, lazy, Suspense } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState, useMemo, useEffect, lazy, Suspense } from "react";
+import type { GalleryPhoto } from "../lib/photos";
 
 const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
-interface GalleryPhoto {
-  id: string;
-  src: string;
-  width: number;
-  height: number;
-  category: string;
-  title?: string;
-}
-
 interface Props {
   photos: GalleryPhoto[];
-  categories: string[];
+  /** Filter tabs. Omit to hide them (e.g. on project pages). */
+  categories?: { name: string; slug: string }[];
+  pageSize?: number;
 }
 
-// Sample photos for initial build (will be replaced by Sanity data)
-const samplePhotos: GalleryPhoto[] = [
-  { id: "1", src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&auto=format", width: 600, height: 800, category: "shows", title: "Concert" },
-  { id: "2", src: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&auto=format", width: 600, height: 400, category: "motorsports", title: "Racing" },
-  { id: "3", src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format", width: 600, height: 700, category: "travel", title: "Mountains" },
-  { id: "4", src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&auto=format", width: 600, height: 500, category: "nature", title: "Forest" },
-  { id: "5", src: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format", width: 600, height: 750, category: "shows", title: "Drummer" },
-  { id: "6", src: "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=600&auto=format", width: 600, height: 450, category: "motorsports", title: "Track" },
-  { id: "7", src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format", width: 600, height: 600, category: "travel", title: "Road" },
-  { id: "8", src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format", width: 600, height: 800, category: "nature", title: "Bird" },
-  { id: "9", src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&auto=format", width: 600, height: 500, category: "shows", title: "Festival" },
-  { id: "10", src: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&auto=format", width: 600, height: 650, category: "motorsports", title: "Motorcycle" },
-  { id: "11", src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format", width: 600, height: 400, category: "travel", title: "Beach" },
-  { id: "12", src: "https://images.unsplash.com/photo-1475855581690-80accde3ae2b?w=600&auto=format", width: 600, height: 700, category: "nature", title: "Mountains" },
-];
+const ALL = "all";
 
-const allCategories = ["ALL", "MOTORSPORTS", "SHOWS", "TRAVEL", "NATURE", "PEOPLE"];
-
-export default function Gallery({ photos = samplePhotos, categories = allCategories }: Partial<Props>) {
-  const [activeFilter, setActiveFilter] = useState("ALL");
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
-
+function useColumnCount() {
+  const [count, setCount] = useState(3);
   useEffect(() => {
-    const handler = (e: Event) => {
-      const filter = (e as CustomEvent<string>).detail;
-      if (filter) setActiveFilter(filter);
+    const sm = window.matchMedia("(max-width: 639px)");
+    const lg = window.matchMedia("(max-width: 1023px)");
+    const update = () => setCount(sm.matches ? 1 : lg.matches ? 2 : 3);
+    update();
+    sm.addEventListener("change", update);
+    lg.addEventListener("change", update);
+    return () => {
+      sm.removeEventListener("change", update);
+      lg.removeEventListener("change", update);
     };
+  }, []);
+  return count;
+}
+
+export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
+  const [activeFilter, setActiveFilter] = useState(ALL);
+  const [visibleCount, setVisibleCount] = useState(pageSize);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
+  const columnCount = useColumnCount();
+
+  // Filter can come from the URL (?c=slug, e.g. a link from a project page)
+  // or from the header / hero links on this page.
+  useEffect(() => {
+    const select = (slug: string | null) => {
+      if (!slug) return;
+      setActiveFilter(slug);
+      setVisibleCount(pageSize);
+    };
+    select(new URLSearchParams(window.location.search).get("c"));
+    const handler = (e: Event) => select((e as CustomEvent<string>).detail);
     window.addEventListener("set-gallery-filter", handler);
     return () => window.removeEventListener("set-gallery-filter", handler);
-  }, []);
+  }, [pageSize]);
 
-  const filteredPhotos = useMemo(() => {
-    if (activeFilter === "ALL") return photos;
-    return photos.filter((p) => p.category.toUpperCase() === activeFilter);
-  }, [photos, activeFilter]);
+  const filteredPhotos = useMemo(
+    () => (activeFilter === ALL ? photos : photos.filter((p) => p.category === activeFilter)),
+    [photos, activeFilter],
+  );
+  const visiblePhotos = filteredPhotos.slice(0, visibleCount);
 
-  // Distribute photos into 3 columns (shortest column first)
+  // Distribute photos into columns (shortest column first), keeping their index for the lightbox.
   const columns = useMemo(() => {
-    const cols: GalleryPhoto[][] = [[], [], []];
-    const heights = [0, 0, 0];
-
-    filteredPhotos.forEach((photo) => {
-      const shortestCol = heights.indexOf(Math.min(...heights));
-      cols[shortestCol].push(photo);
-      heights[shortestCol] += photo.height / photo.width;
+    const cols: { photo: GalleryPhoto; index: number }[][] = Array.from({ length: columnCount }, () => []);
+    const heights = new Array(columnCount).fill(0);
+    visiblePhotos.forEach((photo, index) => {
+      const shortest = heights.indexOf(Math.min(...heights));
+      cols[shortest].push({ photo, index });
+      heights[shortest] += photo.height / photo.width;
     });
-
     return cols;
-  }, [filteredPhotos]);
+  }, [visiblePhotos, columnCount]);
 
-  const lightboxSlides = filteredPhotos.map((p) => ({ src: p.src }));
+  const slides = useMemo(
+    () =>
+      filteredPhotos.map((p) => ({
+        src: p.full[p.full.length - 1].src,
+        width: p.width,
+        height: p.height,
+        alt: p.alt,
+        srcSet: p.full,
+      })),
+    [filteredPhotos],
+  );
+
+  const tabs = categories && categories.length > 1 ? [{ name: "All", slug: ALL }, ...categories] : [];
 
   return (
-    <section
-      ref={sectionRef}
-      id="gallery"
-      className="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-5 max-lg:px-6"
-    >
-      {/* Filter Tabs */}
-      <motion.div
-        className="flex justify-center gap-2 mb-8 max-sm:flex-wrap"
-        initial={{ opacity: 0, y: 15 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-      >
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveFilter(cat)}
-            className={`px-3 py-2 rounded-sm text-[11px] tracking-[2px] uppercase transition-colors ${
-              activeFilter === cat
-                ? "text-[#f9f0f1]"
-                : "text-[#f9f0f199] hover:text-[#f9f0f1cc]"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </motion.div>
+    <div>
+      {tabs.length > 0 && (
+        <div className="flex justify-center gap-2 mb-8 flex-wrap">
+          {tabs.map((cat) => (
+            <button
+              key={cat.slug}
+              onClick={() => {
+                setActiveFilter(cat.slug);
+                setVisibleCount(pageSize);
+              }}
+              className={`px-3 py-2 rounded-sm text-[11px] tracking-[2px] uppercase transition-colors ${
+                activeFilter === cat.slug ? "text-text" : "text-text-60 hover:text-text-70"
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      )}
 
-      {/* Masonry Grid */}
-      <div className="flex gap-2 max-sm:flex-col">
+      {/* Masonry grid. Keyed by filter so the fade-in replays when it changes. */}
+      <div key={activeFilter} className="flex gap-2 max-sm:flex-col animate-gallery-in">
         {columns.map((col, colIdx) => (
-          <div key={colIdx} className="flex-1 flex flex-col gap-2">
-            <AnimatePresence mode="popLayout">
-              {col.map((photo, photoIdx) => (
-                <motion.div
-                  key={photo.id}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: photoIdx * 0.05 }}
-                  className="relative overflow-hidden rounded-[2px] cursor-pointer group"
-                  onClick={() => {
-                    const idx = filteredPhotos.findIndex((p) => p.id === photo.id);
-                    setLightboxIndex(idx);
-                    setLightboxOpen(true);
+          <div key={colIdx} className="flex-1 flex flex-col gap-2 min-w-0">
+            {col.map(({ photo, index }) => (
+              <button
+                key={photo.id}
+                type="button"
+                onClick={() => setLightboxIndex(index)}
+                className="relative block overflow-hidden rounded-[2px] cursor-zoom-in group bg-bg-light bg-cover bg-center"
+                style={{
+                  aspectRatio: `${photo.width}/${photo.height}`,
+                  backgroundImage: photo.lqip ? `url(${photo.lqip})` : undefined,
+                }}
+                aria-label={photo.alt || "Open photo"}
+              >
+                <img
+                  src={photo.src}
+                  srcSet={photo.srcSet}
+                  sizes={`(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw`}
+                  width={photo.width}
+                  height={photo.height}
+                  alt={photo.alt}
+                  loading={index < 6 ? "eager" : "lazy"}
+                  decoding="async"
+                  onLoad={(e) => e.currentTarget.classList.add("loaded")}
+                  ref={(img) => {
+                    // Cached images can finish loading before React attaches onLoad.
+                    if (img?.complete) img.classList.add("loaded");
                   }}
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.title || ""}
-                    loading="lazy"
-                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
-                    style={{ aspectRatio: `${photo.width}/${photo.height}` }}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                  className="gallery-img w-full h-full object-cover block group-hover:scale-[1.03]"
+                />
+              </button>
+            ))}
           </div>
         ))}
       </div>
 
-      {/* View More Button */}
-      <motion.div
-        className="flex justify-center mt-10"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        <button className="px-10 py-3 border border-[#f9f0f14d] rounded-[2px] text-[12px] tracking-[3px] text-[#f9f0f1cc] uppercase hover:border-[#f9f0f180] hover:text-[#f9f0f1] transition-colors">
-          View More Work
-        </button>
-      </motion.div>
+      {filteredPhotos.length === 0 && (
+        <p className="text-center text-[12px] tracking-[2px] text-text-40 uppercase py-20">No photos yet</p>
+      )}
 
-      {/* Lightbox */}
-      {lightboxOpen && (
+      {visibleCount < filteredPhotos.length && (
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => setVisibleCount((n) => n + pageSize)}
+            className="px-10 py-3 border border-text-30 rounded-[2px] text-[12px] tracking-[3px] text-text-70 uppercase hover:border-text-50 hover:text-text transition-colors"
+          >
+            View More Work
+          </button>
+        </div>
+      )}
+
+      {lightboxIndex >= 0 && (
         <Suspense fallback={null}>
           <Lightbox
-            open={lightboxOpen}
-            close={() => setLightboxOpen(false)}
+            open
+            close={() => setLightboxIndex(-1)}
             index={lightboxIndex}
-            slides={lightboxSlides}
+            slides={slides}
+            on={{ view: ({ index }) => setLightboxIndex(index) }}
           />
         </Suspense>
       )}
-    </section>
+    </div>
   );
 }

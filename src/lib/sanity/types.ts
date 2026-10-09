@@ -1,73 +1,68 @@
-export interface SanityImage {
-  _type: "image";
+export interface SanityPhoto {
+  _key?: string;
+  alt?: string;
+  caption?: string;
+  crop?: { top: number; bottom: number; left: number; right: number };
+  hotspot?: { x: number; y: number; width: number; height: number };
   asset: {
-    _ref: string;
-    _type: "reference";
-  };
-  hotspot?: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
+    _id: string;
+    metadata: {
+      lqip?: string;
+      dimensions: { width: number; height: number };
+    };
   };
 }
 
-export interface Category {
-  _id: string;
+export interface CategoryRef {
   name: string;
   slug: string;
-  coverImage?: SanityImage;
-  order: number;
+}
+
+export interface Category extends CategoryRef {
+  _id: string;
+  photos: SanityPhoto[];
 }
 
 export interface Project {
   _id: string;
   name: string;
   slug: string;
-  description?: string;
-  coverImage?: SanityImage;
   date?: string;
-  order: number;
+  description?: string;
+  category?: CategoryRef;
+  coverImage?: SanityPhoto;
+  photos: SanityPhoto[];
 }
 
-export interface Photo {
+export interface Press {
   _id: string;
+  outlet: string;
+  url: string;
   title?: string;
-  image: SanityImage;
-  category: {
-    name: string;
-    slug: string;
-  };
-  project?: {
-    name: string;
-    slug: string;
-  };
-  order?: number;
-  date?: string;
-  featured?: boolean;
-  heroPosition?: "left" | "top-right" | "bottom-right";
-  lqip?: string;
-  dimensions?: {
-    width: number;
-    height: number;
-    aspectRatio: number;
-  };
-  exif?: {
-    camera?: string;
-    lens?: string;
-    focalLength?: string;
-    aperture?: string;
-    shutter?: string;
-    iso?: number;
-  };
+  date: string;
+  project?: { slug: string };
+}
+
+export interface HeroItem {
+  image: SanityPhoto;
+  category: CategoryRef;
 }
 
 export interface SiteSettings {
   name: string;
   tagline?: string;
-  email: string;
-  instagram: string;
+  email?: string;
+  instagram?: string;
   instagramUrl?: string;
   behanceUrl?: string;
+  shopUrl?: string;
   seoDescription?: string;
+  hero: HeroItem[];
+}
+
+export interface SiteData {
+  settings: SiteSettings;
+  categories: Category[];
+  projects: Project[];
+  press: Press[];
 }

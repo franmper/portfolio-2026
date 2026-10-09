@@ -1,9 +1,12 @@
 import { defineType, defineField } from "sanity";
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
+import { photosField } from "./objects/photoList";
 
 export default defineType({
   name: "project",
   title: "Project",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
     defineField({
       name: "name",
@@ -19,6 +22,18 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
+      description: "Optional. Used as a label on the project card.",
+    }),
+    defineField({
+      name: "date",
+      title: "Date",
+      type: "date",
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
@@ -27,23 +42,21 @@ export default defineType({
     defineField({
       name: "coverImage",
       title: "Cover Image",
-      type: "image",
-      options: { hotspot: true },
+      type: "photo",
+      description: "Optional. Defaults to the first photo.",
     }),
-    defineField({
-      name: "date",
-      title: "Date",
-      type: "date",
-    }),
-    defineField({
-      name: "order",
-      title: "Order",
-      type: "number",
-      initialValue: 0,
-    }),
+    photosField,
+    orderRankField({ type: "project" }),
   ],
-  orderings: [
-    { title: "Order", name: "orderAsc", by: [{ field: "order", direction: "asc" }] },
-    { title: "Date", name: "dateDesc", by: [{ field: "date", direction: "desc" }] },
-  ],
+  preview: {
+    select: { title: "name", date: "date", cover: "coverImage", photos: "photos" },
+    prepare({ title, date, cover, photos }) {
+      const count = photos?.length ?? 0;
+      return {
+        title,
+        subtitle: [date, `${count} photo${count === 1 ? "" : "s"}`].filter(Boolean).join(" · "),
+        media: cover?.asset ? cover : photos?.[0],
+      };
+    },
+  },
 });
