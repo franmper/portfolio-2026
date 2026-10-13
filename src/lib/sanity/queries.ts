@@ -15,10 +15,10 @@ export const siteDataQuery = `{
       "category": category->{ name, "slug": slug.current }
     }, [])
   },
-  "categories": *[_type == "category" && defined(slug.current)] | order(orderRank) {
+  "categories": *[_type == "category" && defined(slug.current)] | order(orderRank asc, _createdAt asc) {
     _id, name, "slug": slug.current, ${photos}
   },
-  "projects": *[_type == "project" && defined(slug.current)] | order(orderRank) {
+  "projects": *[_type == "project" && defined(slug.current)] | order(orderRank asc, _createdAt asc) {
     _id, name, "slug": slug.current, date, description,
     "category": category->{ name, "slug": slug.current },
     "coverImage": select(defined(coverImage.asset) => coverImage${photo}),

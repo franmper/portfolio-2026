@@ -36,7 +36,7 @@ const ogSource = settings.hero[0]?.image ?? nonEmptyCategories[0]?.photos[0];
       <Gallery client:load photos={galleryPhotos} categories={categoryLinks} />
     </section>
     <ProjectGrid projects={projects} />
-    <PressList id="press" items={press} />
+    <PressList id="press" items={press} limit={8} />
     <ShopCta url={settings.shopUrl} />
     <Footer settings={settings} />
   </main>

@@ -1,0 +1,26 @@
+---
+import type { Press } from "../lib/sanity/types";
+
+interface Props {
+  item: Press;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="border-b border-text-10">
+  <a
+    href={item.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group flex items-baseline gap-6 py-4 max-sm:flex-col max-sm:gap-1"
+  >
+    <span class="w-[220px] shrink-0 text-[14px] tracking-[2px] uppercase text-text max-sm:w-auto">{item.outlet}</span>
+    <span class="flex-1 min-w-0 text-[13px] text-text-60 group-hover:text-text transition-colors truncate max-sm:whitespace-normal">
+      {item.title}
+    </span>
+    <span class="shrink-0 text-[10px] tracking-[2px] text-text-40">
+      {item.date.slice(0, 4)} <span class="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+    </span>
+  </a>
+</li>

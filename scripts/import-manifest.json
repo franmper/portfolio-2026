@@ -1,0 +1,26 @@
+{
+  "categories": [
+    { "name": "Formula", "slug": "formula" },
+    { "name": "Rally", "slug": "rally" },
+    { "name": "Turismo", "slug": "turismo" },
+    { "name": "Motocross", "slug": "motocross" },
+    { "name": "Cars", "slug": "cars" }
+  ],
+  "projects": [
+    { "folder": "F1 Monza 2024", "name": "F1 Monza 2024", "category": "formula" },
+    { "folder": "F1 Spa 2024", "name": "F1 Spa 2024", "category": "formula" },
+    { "folder": "F1 Silverstone 2025", "name": "F1 Silverstone 2025", "category": "formula" },
+    { "folder": "F1 Pits Silvertone 2025", "name": "F1 Pits Silverstone 2025", "category": "formula" },
+    { "folder": "F2 Silverstone 2025", "name": "F2 Silverstone 2025", "category": "formula" },
+    { "folder": "F2 y F3 Cordoba 2026", "name": "F2 y F3 Córdoba 2026", "category": "formula" },
+    { "folder": "Old School F1", "name": "Old School F1", "category": "formula" },
+    { "folder": "Rally Sudamericano Jesus Maria 2025", "name": "Rally Sudamericano Jesús María 2025", "category": "rally" },
+    { "folder": "Rally Sudamericano Mina Clavero 2026", "name": "Rally Sudamericano Mina Clavero 2026", "category": "rally" },
+    { "folder": "TC Cordoba 2025", "name": "TC Córdoba 2025", "category": "turismo" },
+    { "folder": "TC Cordoba 2026 \"Velocidad\"", "name": "TC Córdoba 2026 \"Velocidad\"", "category": "turismo" },
+    { "folder": "TN Cordoba 2026", "name": "TN Córdoba 2026", "category": "turismo" },
+    { "folder": "TN Rio Cuarto 2026", "name": "TN Río Cuarto 2026", "category": "turismo" },
+    { "folder": "Monster Energy Motocross", "name": "Monster Energy Motocross", "category": "motocross" },
+    { "folder": "Autos Estacionados", "name": "Autos Estacionados", "category": "cars" }
+  ]
+}

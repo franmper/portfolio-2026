@@ -8,7 +8,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "sanity": "sanity dev",
-    "sanity:deploy": "sanity deploy"
+    "sanity:deploy": "sanity deploy",
+    "upload": "sanity exec scripts/upload-photos.ts --with-user-token --",
+    "import-press": "sanity exec scripts/import-press.ts --with-user-token --"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.1",
@@ -27,5 +29,8 @@
     "styled-components": "^6.5.3",
     "tailwindcss": "^4.3.3",
     "yet-another-react-lightbox": "^3.32.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5"
   }
 }

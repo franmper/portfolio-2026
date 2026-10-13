@@ -1,36 +1,36 @@
 ---
+import PressRow from "./PressRow.astro";
 import type { Press } from "../lib/sanity/types";
 
 interface Props {
   items: Press[];
   id?: string;
+  /** Show this many notes and fold the rest behind a "Ver todas" toggle. */
+  limit?: number;
 }
 
-const { items, id } = Astro.props;
+const { items, id, limit } = Astro.props;
+const visible = limit ? items.slice(0, limit) : items;
+const folded = limit ? items.slice(limit) : [];
 ---
 
 {items.length > 0 && (
   <section id={id} class="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-10 max-lg:px-6 scroll-mt-6">
     <h2 class="text-[11px] tracking-[3px] text-text-40 uppercase mb-6">Published in</h2>
     <ul class="border-t border-text-10">
-      {items.map((item) => (
-        <li class="border-b border-text-10">
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex items-baseline gap-6 py-4 max-sm:flex-col max-sm:gap-1"
-          >
-            <span class="w-[220px] shrink-0 text-[14px] tracking-[2px] uppercase text-text max-sm:w-auto">{item.outlet}</span>
-            <span class="flex-1 min-w-0 text-[13px] text-text-60 group-hover:text-text transition-colors truncate max-sm:whitespace-normal">
-              {item.title}
-            </span>
-            <span class="shrink-0 text-[10px] tracking-[2px] text-text-40">
-              {item.date.slice(0, 4)} <span class="inline-block transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
-            </span>
-          </a>
-        </li>
-      ))}
+      {visible.map((item) => <PressRow item={item} />)}
     </ul>
+    {folded.length > 0 && (
+      <details class="group/press">
+        <summary class="list-none cursor-pointer [&::-webkit-details-marker]:hidden flex justify-center mt-8 group-open/press:hidden">
+          <span class="px-10 py-3 border border-text-30 rounded-[2px] text-[12px] tracking-[3px] text-text-70 uppercase hover:border-text-50 hover:text-text transition-colors">
+            Ver todas ({items.length})
+          </span>
+        </summary>
+        <ul>
+          {folded.map((item) => <PressRow item={item} />)}
+        </ul>
+      </details>
+    )}
   </section>
 )}
