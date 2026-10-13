@@ -9,18 +9,18 @@ const photos = `"photos": coalesce(photos[defined(asset)]${photo}, [])`;
 
 export const siteDataQuery = `{
   "settings": *[_type == "siteSettings"] | order(_updatedAt desc)[0] {
-    name, tagline, email, instagram, instagramUrl, behanceUrl, shopUrl, seoDescription,
+    name, tagline, taglineEn, email, instagram, instagramUrl, behanceUrl, shopUrl, seoDescription, seoDescriptionEn,
     "hero": coalesce(hero[defined(image.asset) && defined(category)] {
       "image": image${photo},
-      "category": category->{ name, "slug": slug.current }
+      "category": category->{ name, nameEn, "slug": slug.current }
     }, [])
   },
   "categories": *[_type == "category" && defined(slug.current)] | order(orderRank asc, _createdAt asc) {
-    _id, name, "slug": slug.current, ${photos}
+    _id, name, nameEn, description, descriptionEn, "slug": slug.current, ${photos}
   },
   "projects": *[_type == "project" && defined(slug.current)] | order(orderRank asc, _createdAt asc) {
-    _id, name, "slug": slug.current, date, description,
-    "category": category->{ name, "slug": slug.current },
+    _id, name, "slug": slug.current, date, description, descriptionEn,
+    "category": category->{ name, nameEn, "slug": slug.current },
     "coverImage": select(defined(coverImage.asset) => coverImage${photo}),
     ${photos}
   },

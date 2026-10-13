@@ -51,10 +51,17 @@ export default defineType({
     }),
     defineField({
       name: "tagline",
-      title: "Tagline",
+      title: "Tagline (Spanish)",
       type: "string",
       group: "info",
       initialValue: "Portfolio 2026",
+    }),
+    defineField({
+      name: "taglineEn",
+      title: "Tagline (English)",
+      type: "string",
+      group: "info",
+      description: "Optional. Falls back to the tagline above.",
     }),
     defineField({
       name: "email",
@@ -84,6 +91,14 @@ export default defineType({
       group: "info",
     }),
     defineField({
+      name: "seoDescriptionEn",
+      title: "SEO Description (English)",
+      type: "text",
+      rows: 3,
+      group: "info",
+      description: "Optional. Falls back to the description above.",
+    }),
+    defineField({
       name: "shopUrl",
       title: "Shop URL",
       type: "url",
@@ -92,7 +107,7 @@ export default defineType({
     }),
     defineField({
       name: "seoDescription",
-      title: "SEO Description",
+      title: "SEO Description (Spanish)",
       type: "text",
       rows: 3,
       group: "info",

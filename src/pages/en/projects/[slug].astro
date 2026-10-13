@@ -1,0 +1,13 @@
+---
+import Project from "../../../views/Project.astro";
+import { getSiteData } from "../../../lib/sanity/data";
+
+export async function getStaticPaths() {
+  const { projects } = await getSiteData("en");
+  return projects.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<Project lang="en" slug={slug!} />

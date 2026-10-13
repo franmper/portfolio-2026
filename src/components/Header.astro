@@ -1,4 +1,5 @@
 ---
+import { homePath, otherLang, pathFor, t, type Lang } from "../i18n/ui";
 import type { CategoryRef, SiteSettings } from "../lib/sanity/types";
 
 interface Props {
@@ -6,18 +7,24 @@ interface Props {
   categories: CategoryRef[];
   hasProjects: boolean;
   hasPress: boolean;
+  lang: Lang;
+  /** Current page path without language prefix, to link to the same page in the other language. */
+  path?: string;
 }
 
-const { settings, categories, hasProjects, hasPress } = Astro.props;
+const { settings, categories, hasProjects, hasPress, lang, path = "" } = Astro.props;
+const tr = t(lang);
+const home = homePath(lang);
+const other = otherLang(lang);
 const links = [
-  ...categories.map((c) => ({ label: c.name, href: `/?c=${c.slug}#gallery`, filter: c.slug })),
-  ...(hasProjects ? [{ label: "Projects", href: "/#projects", filter: undefined }] : []),
-  ...(hasPress ? [{ label: "Press", href: "/#press", filter: undefined }] : []),
+  ...categories.map((c) => ({ label: c.name, href: pathFor(lang, `category/${c.slug}/`) })),
+  ...(hasProjects ? [{ label: tr.projects, href: `${home}#projects` }] : []),
+  ...(hasPress ? [{ label: tr.press, href: `${home}#press` }] : []),
 ];
 ---
 
 <header class="flex items-center justify-between px-[60px] py-7 max-w-[1440px] mx-auto w-full max-lg:px-6 max-md:py-4">
-  <a href="/" class="shrink-0">
+  <a href={home} class="shrink-0">
     <img src="/images/F.svg" alt={settings.name} width="36" height="36" />
   </a>
 
@@ -26,7 +33,6 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          data-filter={link.filter}
           class="text-[11px] tracking-[2px] uppercase text-text-70 hover:text-text transition-colors"
         >
           {link.label}
@@ -41,9 +47,9 @@ const links = [
           href={settings.shopUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-[11px] tracking-[2px] text-text-70 hover:text-text transition-colors max-md:hidden"
+          class="text-[11px] tracking-[2px] uppercase text-text-70 hover:text-text transition-colors max-md:hidden"
         >
-          TIENDA
+          {tr.shop}
         </a>
       </>
     )}
@@ -52,7 +58,7 @@ const links = [
       <>
         <div class="w-px h-8 bg-text-10 max-md:hidden"></div>
         <div class="flex flex-col gap-0.5 max-md:hidden">
-          <span class="text-[13px] tracking-[1px] text-text">Contact</span>
+          <span class="text-[13px] tracking-[1px] text-text">{tr.contact}</span>
           {settings.email && (
             <a href={`mailto:${settings.email}`} class="text-[10px] tracking-[0.5px] text-text-50 hover:text-text transition-colors">
               {settings.email}
@@ -67,8 +73,18 @@ const links = [
       </>
     )}
 
+    <a
+      href={pathFor(other, path)}
+      hreflang={other}
+      lang={other}
+      class="text-[11px] tracking-[2px] uppercase text-text-50 hover:text-text transition-colors"
+      aria-label={other === "en" ? "English" : "Español"}
+    >
+      {other}
+    </a>
+
     <!-- Mobile menu button -->
-    <button id="mobile-menu-btn" class="hidden max-md:flex flex-col gap-[5px] p-1" aria-label="Menu">
+    <button id="mobile-menu-btn" class="hidden max-md:flex flex-col gap-[5px] p-1" aria-label={tr.menu}>
       <span class="block w-5 h-px bg-text"></span>
       <span class="block w-5 h-px bg-text"></span>
       <span class="block w-5 h-px bg-text"></span>
@@ -78,7 +94,7 @@ const links = [
 
 <!-- Mobile menu overlay -->
 <div id="mobile-menu" class="fixed inset-0 bg-bg/95 backdrop-blur-sm z-50 hidden flex-col items-center justify-center gap-6">
-  <button id="mobile-menu-close" class="absolute top-5 right-6 text-text p-2" aria-label="Close menu">
+  <button id="mobile-menu-close" class="absolute top-5 right-6 text-text p-2" aria-label={tr.closeMenu}>
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
       <line x1="4" y1="4" x2="16" y2="16" />
       <line x1="16" y1="4" x2="4" y2="16" />
@@ -88,7 +104,6 @@ const links = [
   {links.map((link) => (
     <a
       href={link.href}
-      data-filter={link.filter}
       class="text-[14px] tracking-[3px] uppercase text-text-70 hover:text-text transition-colors mobile-nav-link"
     >
       {link.label}
@@ -100,9 +115,9 @@ const links = [
       href={settings.shopUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="text-[14px] tracking-[3px] text-text-70 hover:text-text transition-colors mobile-nav-link"
+      class="text-[14px] tracking-[3px] uppercase text-text-70 hover:text-text transition-colors mobile-nav-link"
     >
-      TIENDA
+      {tr.shop}
     </a>
   )}
 
@@ -110,8 +125,8 @@ const links = [
 
   <div class="flex flex-col items-center gap-2 mt-2">
     {settings.email && (
-      <a href={`mailto:${settings.email}`} class="text-[11px] tracking-[2px] text-text-50 hover:text-text transition-colors">
-        EMAIL
+      <a href={`mailto:${settings.email}`} class="text-[11px] tracking-[2px] uppercase text-text-50 hover:text-text transition-colors">
+        {tr.email}
       </a>
     )}
     {settings.instagram && (

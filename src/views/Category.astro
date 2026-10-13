@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroTitle from "../components/HeroTitle.astro";
+import Gallery from "../components/Gallery";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import Footer from "../components/Footer.astro";
+import { getSiteData } from "../lib/sanity/data";
+import { urlFor } from "../lib/sanity/client";
+import { autoAlt, eventPositions, toGalleryPhoto } from "../lib/photos";
+import { homePath, pathFor, t, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const tr = t(lang);
+const { settings, categories, projects, press } = await getSiteData(lang);
+const category = categories.find((c) => c.slug === slug)!;
+const path = `category/${category.slug}/`;
+
+const categoryProjects = projects.filter((p) => p.category?.slug === category.slug);
+const eventOf = eventPositions(projects);
+const photos = category.photos.map((p) => {
+  const event = eventOf.get(p.asset._id);
+  return toGalleryPhoto(p, undefined, p.alt || (event ? autoAlt(event.name, event.position, tr.photo) : category.name));
+});
+const categoryLinks = categories.filter((c) => c.photos.length > 0 || projects.some((p) => p.category?.slug === c.slug)).map(({ name, slug }) => ({ name, slug }));
+
+const title = `${tr.categoryTitle(category.name)} | ${settings.name}`;
+const totalPhotos = categoryProjects.reduce((n, p) => n + p.photos.length, 0) || photos.length;
+const description =
+  category.description ||
+  `${tr.categoryTitle(category.name)} ${tr.by} ${settings.name}: ${totalPhotos} ${tr.photos}${categoryProjects.length ? `, ${categoryProjects.length} ${tr.events}` : ""}.`;
+
+const cover = category.photos[0] ?? categoryProjects[0]?.photos[0];
+const ogImage = cover && urlFor(cover).width(1200).height(630).fit("crop").url();
+const pageUrl = new URL(pathFor(lang, path), Astro.site).href;
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: tr.categoryTitle(category.name),
+    description,
+    url: pageUrl,
+    inLanguage: lang,
+    author: { "@type": "Person", name: settings.name },
+    image: photos.slice(0, 50).map((p) => ({
+      "@type": "ImageObject",
+      contentUrl: p.full[p.full.length - 1].src,
+      thumbnailUrl: p.src,
+      name: p.alt,
+      width: p.width,
+      height: p.height,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: settings.name, item: new URL(homePath(lang), Astro.site).href },
+      { "@type": "ListItem", position: 2, name: category.name, item: pageUrl },
+    ],
+  },
+];
+---
+
+<Layout lang={lang} path={path} title={title} description={description} image={ogImage} jsonLd={jsonLd}>
+  <main class="min-h-screen">
+    <Header settings={settings} categories={categoryLinks} hasProjects={projects.length > 0} hasPress={press.length > 0} lang={lang} path={path} />
+    <HeroTitle eyebrow={settings.tagline} title={category.name} />
+    {category.description && (
+      <div class="max-w-[1440px] mx-auto w-full px-[60px] max-lg:px-6 -mt-2 pb-4 fade-in">
+        <p class="max-w-prose text-[14px] leading-relaxed text-text-70">{category.description}</p>
+      </div>
+    )}
+    <section class="max-w-[1440px] mx-auto w-full px-[60px] pt-[30px] pb-5 max-lg:px-6">
+      <Gallery client:load photos={photos} labels={{ all: tr.all, viewMore: tr.viewMore, noPhotos: tr.noPhotos, openPhoto: tr.openPhoto, lightbox: { ...tr.lightbox } }} />
+    </section>
+    <ProjectGrid projects={categoryProjects} lang={lang} />
+    <Footer settings={settings} />
+  </main>
+</Layout>

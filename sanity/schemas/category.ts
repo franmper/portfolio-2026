@@ -10,9 +10,15 @@ export default defineType({
   fields: [
     defineField({
       name: "name",
-      title: "Name",
+      title: "Name (Spanish)",
       type: "string",
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "nameEn",
+      title: "Name (English)",
+      type: "string",
+      description: "Optional. Falls back to the name above on the English site.",
     }),
     defineField({
       name: "slug",
@@ -20,6 +26,20 @@ export default defineType({
       type: "slug",
       options: { source: "name", maxLength: 96 },
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "description",
+      title: "Intro text (Spanish)",
+      type: "text",
+      rows: 3,
+      description: "Optional. Shown at the top of the category page. Good for SEO: say what you shoot and where.",
+    }),
+    defineField({
+      name: "descriptionEn",
+      title: "Intro text (English)",
+      type: "text",
+      rows: 3,
+      description: "Optional. Falls back to the Spanish text.",
     }),
     photosField,
     orderRankField({ type: "category" }),

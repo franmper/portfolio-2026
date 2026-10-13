@@ -1,12 +1,15 @@
 ---
 import { urlFor } from "../lib/sanity/client";
 import { srcSet } from "../lib/photos";
+import { pathFor, t, type Lang } from "../i18n/ui";
 import type { Project } from "../lib/sanity/types";
 
 interface Props {
   projects: Project[];
+  lang: Lang;
 }
 
+const { lang } = Astro.props;
 const cards = Astro.props.projects
   .map((p) => ({ project: p, cover: p.coverImage ?? p.photos[0] }))
   .filter((c) => c.cover);
@@ -14,10 +17,10 @@ const cards = Astro.props.projects
 
 {cards.length > 0 && (
   <section id="projects" class="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-10 max-lg:px-6 scroll-mt-6">
-    <h2 class="text-[11px] tracking-[3px] text-text-40 uppercase mb-6">Projects</h2>
+    <h2 class="text-[11px] tracking-[3px] text-text-40 uppercase mb-6">{t(lang).projects}</h2>
     <div class="grid grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
       {cards.map(({ project, cover }) => (
-        <a href={`/projects/${project.slug}`} class="group flex flex-col gap-3">
+        <a href={pathFor(lang, `projects/${project.slug}/`)} class="group flex flex-col gap-3">
           <div
             class="relative aspect-[4/3] overflow-hidden rounded-[3px] bg-bg-light bg-cover bg-center"
             style={cover.asset.metadata.lqip ? `background-image: url(${cover.asset.metadata.lqip})` : undefined}

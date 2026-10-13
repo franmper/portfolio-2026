@@ -1,12 +1,15 @@
 ---
 import { urlFor } from "../lib/sanity/client";
 import { srcSet } from "../lib/photos";
+import { pathFor, type Lang } from "../i18n/ui";
 import type { HeroItem } from "../lib/sanity/types";
 
 interface Props {
   items: HeroItem[];
+  lang: Lang;
 }
 
+const { lang } = Astro.props;
 const tiles = Astro.props.items.slice(0, 3).map((item) => ({
   src: urlFor(item.image).width(1200).url(),
   srcSet: srcSet(item.image, [600, 1000, 1400, 2000]),
@@ -34,8 +37,7 @@ const [main, ...side] = tiles;
         >
           {group.tiles.map((tile, i) => (
             <a
-              href={`/?c=${tile.slug}#gallery`}
-              data-filter={tile.slug}
+              href={pathFor(lang, `category/${tile.slug}/`)}
               class:list={["relative overflow-hidden rounded-[3px] group bg-bg-light bg-cover bg-center", i === 0 && !group.main ? "flex-[1.5]" : "flex-1"]}
               style={tile.lqip ? `background-image: url(${tile.lqip})` : undefined}
             >

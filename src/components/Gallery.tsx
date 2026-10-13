@@ -8,6 +8,13 @@ interface Props {
   /** Filter tabs. Omit to hide them (e.g. on project pages). */
   categories?: { name: string; slug: string }[];
   pageSize?: number;
+  labels: {
+    all: string;
+    viewMore: string;
+    noPhotos: string;
+    openPhoto: string;
+    lightbox: Record<string, string>;
+  };
 }
 
 const ALL = "all";
@@ -29,24 +36,19 @@ function useColumnCount() {
   return count;
 }
 
-export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
+export default function Gallery({ photos, categories, pageSize = 24, labels }: Props) {
   const [activeFilter, setActiveFilter] = useState(ALL);
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const columnCount = useColumnCount();
 
-  // Filter can come from the URL (?c=slug, e.g. a link from a project page)
-  // or from the header / hero links on this page.
+  // Old links like "/?c=rally" still pre-select that filter.
   useEffect(() => {
-    const select = (slug: string | null) => {
-      if (!slug) return;
+    const slug = new URLSearchParams(window.location.search).get("c");
+    if (slug) {
       setActiveFilter(slug);
       setVisibleCount(pageSize);
-    };
-    select(new URLSearchParams(window.location.search).get("c"));
-    const handler = (e: Event) => select((e as CustomEvent<string>).detail);
-    window.addEventListener("set-gallery-filter", handler);
-    return () => window.removeEventListener("set-gallery-filter", handler);
+    }
   }, [pageSize]);
 
   const filteredPhotos = useMemo(
@@ -79,7 +81,7 @@ export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
     [filteredPhotos],
   );
 
-  const tabs = categories && categories.length > 1 ? [{ name: "All", slug: ALL }, ...categories] : [];
+  const tabs = categories && categories.length > 1 ? [{ name: labels.all, slug: ALL }, ...categories] : [];
 
   return (
     <div>
@@ -116,7 +118,7 @@ export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
                   aspectRatio: `${photo.width}/${photo.height}`,
                   backgroundImage: photo.lqip ? `url(${photo.lqip})` : undefined,
                 }}
-                aria-label={photo.alt || "Open photo"}
+                aria-label={photo.alt || labels.openPhoto}
               >
                 <img
                   src={photo.src}
@@ -141,7 +143,7 @@ export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
       </div>
 
       {filteredPhotos.length === 0 && (
-        <p className="text-center text-[12px] tracking-[2px] text-text-40 uppercase py-20">No photos yet</p>
+        <p className="text-center text-[12px] tracking-[2px] text-text-40 uppercase py-20">{labels.noPhotos}</p>
       )}
 
       {visibleCount < filteredPhotos.length && (
@@ -150,7 +152,7 @@ export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
             onClick={() => setVisibleCount((n) => n + pageSize)}
             className="px-10 py-3 border border-text-30 rounded-[2px] text-[12px] tracking-[3px] text-text-70 uppercase hover:border-text-50 hover:text-text transition-colors"
           >
-            View More Work
+            {labels.viewMore}
           </button>
         </div>
       )}
@@ -162,6 +164,7 @@ export default function Gallery({ photos, categories, pageSize = 24 }: Props) {
             close={() => setLightboxIndex(-1)}
             index={lightboxIndex}
             slides={slides}
+            labels={labels.lightbox}
             on={{ view: ({ index }) => setLightboxIndex(index) }}
           />
         </Suspense>

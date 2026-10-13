@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroTitle from "../components/HeroTitle.astro";
+import HeroGrid from "../components/HeroGrid.astro";
+import Gallery from "../components/Gallery";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import PressList from "../components/PressList.astro";
+import ShopCta from "../components/ShopCta.astro";
+import Footer from "../components/Footer.astro";
+import { getSiteData } from "../lib/sanity/data";
+import { urlFor } from "../lib/sanity/client";
+import { autoAlt, eventPositions, toGalleryPhoto } from "../lib/photos";
+import { homePath, t, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const tr = t(lang);
+const { settings, categories, projects, press } = await getSiteData(lang);
+
+// Photos with no alt text written in the Studio are described by the event they belong to.
+const eventOf = eventPositions(projects);
+
+const nonEmptyCategories = categories.filter((c) => c.photos.length > 0);
+const galleryPhotos = nonEmptyCategories.flatMap((c) =>
+  c.photos.map((p) => {
+    const event = eventOf.get(p.asset._id);
+    return toGalleryPhoto(p, c.slug, p.alt || (event ? autoAlt(event.name, event.position, tr.photo) : c.name));
+  }),
+);
+const categoryLinks = nonEmptyCategories.map(({ name, slug }) => ({ name, slug }));
+
+const ogSource = settings.hero[0]?.image ?? nonEmptyCategories[0]?.photos[0];
+const ogImage = ogSource && urlFor(ogSource).width(1200).height(630).fit("crop").url();
+const pageUrl = new URL(homePath(lang), Astro.site).href;
+const sameAs = [settings.instagramUrl, settings.behanceUrl].filter(Boolean);
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: settings.name,
+    url: pageUrl,
+    jobTitle: tr.jobTitle,
+    ...(ogImage ? { image: ogImage } : {}),
+    ...(sameAs.length ? { sameAs } : {}),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: settings.name,
+    url: pageUrl,
+    inLanguage: lang,
+  },
+];
+---
+
+<Layout
+  lang={lang}
+  title={`${settings.name} | ${tr.homeTitle}`}
+  description={settings.seoDescription}
+  image={ogImage}
+  jsonLd={jsonLd}
+>
+  <main class="min-h-screen">
+    <Header settings={settings} categories={categoryLinks} hasProjects={projects.length > 0} hasPress={press.length > 0} lang={lang} />
+    <HeroTitle eyebrow={settings.tagline} title={settings.name} />
+    <HeroGrid items={settings.hero} lang={lang} />
+    <section id="gallery" class="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-5 max-lg:px-6 scroll-mt-6">
+      <Gallery client:load photos={galleryPhotos} categories={categoryLinks} labels={{ all: tr.all, viewMore: tr.viewMore, noPhotos: tr.noPhotos, openPhoto: tr.openPhoto, lightbox: { ...tr.lightbox } }} />
+    </section>
+    <ProjectGrid projects={projects} lang={lang} />
+    <PressList id="press" items={press} limit={8} lang={lang} />
+    <ShopCta url={settings.shopUrl} lang={lang} />
+    <Footer settings={settings} />
+  </main>
+</Layout>

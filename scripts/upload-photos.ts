@@ -1,9 +1,10 @@
 /**
  * Bulk import: one folder per project, photos uploaded to Sanity.
  *
- *   npm run upload -- <photos root> [--dry-run] [--gallery 6] [--only "F1 Spa 2024"]
+ *   npm run upload -- <photos root> [--dry-run] [--gallery 6] [--only "F1 Spa 2024"] [--manifest file.json]
  *
- * - Creates the categories and projects listed in scripts/import-manifest.json
+ * - Creates the categories and projects listed in the manifest (default: scripts/import-manifest.json;
+ *   a project `folder` can also be an absolute path)
  *   (existing ones are kept; nothing is overwritten or removed).
  * - Photos are sorted by the date they were taken (falls back to file name).
  * - Safe to re-run: photos already in Sanity are skipped, photos already in a
@@ -13,8 +14,9 @@
  */
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { createReadStream, readFileSync, readdirSync, statSync } from "node:fs";
-import { basename, extname, join } from "node:path";
+import { createReadStream, existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { basename, extname, isAbsolute, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { getCliClient } from "sanity/cli";
 
 interface Manifest {
@@ -36,7 +38,9 @@ const option = (name: string) => {
   return i >= 0 ? args[i + 1] : undefined;
 };
 
-const root = args.find((a) => !a.startsWith("--") && a !== option("gallery") && a !== option("only"));
+const positional = args.find((a) => !a.startsWith("--") && ![option("gallery"), option("only"), option("manifest")].includes(a));
+// With a custom manifest using absolute folder paths, no root is needed.
+const root = positional ?? (option("manifest") ? process.cwd() : undefined);
 const dryRun = flag("dry-run");
 const galleryPerProject = Number(option("gallery") ?? 6);
 const only = option("only");
@@ -47,7 +51,8 @@ if (!root) {
   process.exit(1);
 }
 
-const manifest: Manifest = JSON.parse(readFileSync(new URL("./import-manifest.json", import.meta.url), "utf8"));
+const manifestPath = option("manifest") ?? fileURLToPath(new URL("./import-manifest.json", import.meta.url));
+const manifest: Manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const client = getCliClient({ apiVersion: "2026-02-21" });
 
 const slugify = (s: string) =>
@@ -77,7 +82,10 @@ async function readFolder(dir: string): Promise<LocalPhoto[]> {
     const path = join(dir, name);
     photos.push({ path, name, sha1: await sha1Of(path), takenAt: takenAt(path) });
   }
-  return photos.sort((a, b) => a.takenAt.getTime() - b.takenAt.getTime() || a.name.localeCompare(b.name, undefined, { numeric: true }));
+  // Identical files (e.g. "IMG (1).jpg" copies) would share an asset and a key: keep the first one.
+  const unique = photos.filter((p, i) => photos.findIndex((q) => q.sha1 === p.sha1) === i);
+  if (unique.length < photos.length) console.log(`  skipping ${photos.length - unique.length} duplicate file(s)`);
+  return unique.sort((a, b) => a.takenAt.getTime() - b.takenAt.getTime() || a.name.localeCompare(b.name, undefined, { numeric: true }));
 }
 
 async function pool<T>(items: T[], worker: (item: T, i: number) => Promise<void>) {
@@ -106,13 +114,16 @@ async function main() {
   console.log(`${dryRun ? "[DRY RUN] " : ""}Source: ${root}\n`);
 
   const entries = manifest.projects.filter((p) => !only || p.folder === only);
-  const folders = readdirSync(root!).filter((f) => statSync(join(root!, f)).isDirectory());
-  const missing = entries.filter((e) => !folders.includes(e.folder));
+  // Only look inside the root when some project uses a relative folder name.
+  const folders = entries.some((e) => !isAbsolute(e.folder))
+    ? readdirSync(root!).filter((f) => statSync(join(root!, f)).isDirectory())
+    : [];
+  const missing = entries.filter((e) => !(isAbsolute(e.folder) ? existsSync(e.folder) : folders.includes(e.folder)));
   if (missing.length) {
     console.error(`Folders not found: ${missing.map((m) => m.folder).join(", ")}`);
     process.exit(1);
   }
-  const unlisted = folders.filter((f) => !manifest.projects.some((p) => p.folder === f));
+  const unlisted = !option("manifest") ? folders.filter((f) => !manifest.projects.some((p) => p.folder === f)) : [];
   if (unlisted.length) console.log(`Ignoring folders not in the manifest: ${unlisted.join(", ")}\n`);
 
   // 1. Categories + projects (create only if missing).
@@ -127,7 +138,7 @@ async function main() {
   let totalSkipped = 0;
 
   for (const entry of entries) {
-    const photos = await readFolder(join(root!, entry.folder));
+    const photos = await readFolder(resolve(root!, entry.folder));
     const existing = await client.fetch<{ _id: string; sha1hash: string }[]>(
       `*[_type == "sanity.imageAsset" && sha1hash in $hashes]{ _id, sha1hash }`,
       { hashes: photos.map((p) => p.sha1) },

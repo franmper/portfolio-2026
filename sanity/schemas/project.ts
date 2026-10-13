@@ -35,9 +35,16 @@ export default defineType({
     }),
     defineField({
       name: "description",
-      title: "Description",
+      title: "Description (Spanish)",
       type: "text",
       rows: 3,
+    }),
+    defineField({
+      name: "descriptionEn",
+      title: "Description (English)",
+      type: "text",
+      rows: 3,
+      description: "Optional. Falls back to the description above on the English site.",
     }),
     defineField({
       name: "coverImage",

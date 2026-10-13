@@ -15,6 +15,16 @@ Astro (static) + Sanity (content) + Vercel (hosting).
 - **Orden**: categorías y proyectos se ordenan arrastrando en la lista del Studio.
 - **Contacto, redes, tienda, SEO**: Site Settings → Info. Si cargás **Shop URL**, aparecen el link TIENDA en el header y el bloque de cuadros enmarcados; vacío, se ocultan.
 
+## Idiomas y SEO
+
+- El sitio es bilingüe: español en la raíz (`/`) e inglés en `/en/`. Cada página enlaza a su traducción (selector ES/EN en el header, `hreflang` y sitemap).
+- Los textos fijos están en `src/i18n/ui.ts`.
+- Los textos de Sanity tienen una variante en inglés **opcional** (campos "(English)": nombre de categoría, descripción de proyecto, tagline y descripción SEO). Si está vacía, la versión inglesa usa el texto en español.
+- Los nombres de los proyectos, los títulos de prensa y los alt/caption de las fotos son de un solo idioma.
+- Dominio: `https://ph.franciscoperalta.com` (configurado en `astro.config.mjs`). Genera `sitemap-index.xml`, `robots.txt`, URLs canónicas y datos estructurados (Person, WebSite, ImageGallery, BreadcrumbList).
+- Cada categoría tiene su propia página (`/category/<slug>/`, `/en/category/<slug>/`) con galería y los proyectos de esa categoría. Podés escribir un **Intro text** en cada categoría del Studio (qué fotografiás y dónde): es el texto que Google lee para esa página. Si queda vacío, se genera uno automático.
+- Las fotos sin alt escrito en el Studio usan "<evento>, foto N" automáticamente.
+
 ## Desarrollo
 
 ```bash

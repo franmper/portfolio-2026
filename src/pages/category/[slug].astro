@@ -1,0 +1,16 @@
+---
+import Category from "../../views/Category.astro";
+import { getSiteData } from "../../lib/sanity/data";
+
+// Only categories that have something to show get a page.
+export async function getStaticPaths() {
+  const { categories, projects } = await getSiteData("es");
+  return categories
+    .filter((c) => c.photos.length > 0 || projects.some((p) => p.category?.slug === c.slug))
+    .map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+---
+
+<Category lang="es" slug={slug!} />

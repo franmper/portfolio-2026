@@ -15,11 +15,15 @@ export interface SanityPhoto {
 
 export interface CategoryRef {
   name: string;
+  /** English name; only present on raw data, resolved into `name` by getSiteData(lang). */
+  nameEn?: string;
   slug: string;
 }
 
 export interface Category extends CategoryRef {
   _id: string;
+  description?: string;
+  descriptionEn?: string;
   photos: SanityPhoto[];
 }
 
@@ -29,6 +33,7 @@ export interface Project {
   slug: string;
   date?: string;
   description?: string;
+  descriptionEn?: string;
   category?: CategoryRef;
   coverImage?: SanityPhoto;
   photos: SanityPhoto[];
@@ -51,12 +56,14 @@ export interface HeroItem {
 export interface SiteSettings {
   name: string;
   tagline?: string;
+  taglineEn?: string;
   email?: string;
   instagram?: string;
   instagramUrl?: string;
   behanceUrl?: string;
   shopUrl?: string;
   seoDescription?: string;
+  seoDescriptionEn?: string;
   hero: HeroItem[];
 }
 

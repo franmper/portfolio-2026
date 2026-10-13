@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ph.franciscoperalta.com/sitemap-index.xml

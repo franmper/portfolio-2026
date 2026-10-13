@@ -53,3 +53,25 @@ export function toGalleryPhoto(photo: SanityPhoto, category?: string, fallbackAl
     })),
   };
 }
+
+/**
+ * Descriptive alt text for photos that have none written in the Studio:
+ * "<event name>, photo 12", or just the event/category name when there is no position.
+ */
+export function autoAlt(name: string, position: number | undefined, word: string) {
+  return position ? `${name}, ${word} ${position}` : name;
+}
+
+/**
+ * Maps each asset to the first event (project) it belongs to, with its position in that event,
+ * so category galleries can describe photos as "<event>, photo N".
+ */
+export function eventPositions(projects: { name: string; photos: SanityPhoto[] }[]) {
+  const map = new Map<string, { name: string; position: number }>();
+  for (const project of projects) {
+    project.photos.forEach((p, i) => {
+      if (!map.has(p.asset._id)) map.set(p.asset._id, { name: project.name, position: i + 1 });
+    });
+  }
+  return map;
+}

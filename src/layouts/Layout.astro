@@ -1,27 +1,47 @@
 ---
 import "../styles/global.css";
+import { languages, otherLang, pathFor, t, type Lang } from "../i18n/ui";
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  lang: Lang;
+  /** Page path without language prefix or leading slash: "" for home, "projects/<slug>/" for a project. */
+  path?: string;
+  jsonLd?: Record<string, unknown>[];
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, lang, path = "", jsonLd = [] } = Astro.props;
+
+const absolute = (l: Lang) => new URL(pathFor(l, path), Astro.site).href;
+const canonical = absolute(lang);
+const other = otherLang(lang);
+
+// Escape "<" so structured data can never close the script tag.
+const json = (data: unknown) => JSON.stringify(data).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/images/F.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    {languages.map((l) => <link rel="alternate" hreflang={l} href={absolute(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={absolute("es")} />
+    <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={t(lang).locale} />
+    <meta property="og:locale:alternate" content={t(other).locale} />
     {image && <meta property="og:image" content={image} />}
     <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd.map((data) => <script type="application/ld+json" set:html={json(data)} />)}
   </head>
   <body class="min-h-screen overflow-x-hidden">
     <slot />
@@ -30,18 +50,6 @@ const { title, description, image } = Astro.props;
         entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
       }, { threshold: 0.1 });
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
-      // Category links point to "/?c=slug#gallery". On the home page, filter in place instead of reloading.
-      document.querySelectorAll('[data-filter]').forEach((link) => {
-        link.addEventListener('click', (e) => {
-          if (location.pathname !== '/') return;
-          e.preventDefault();
-          const filter = e.currentTarget.dataset.filter;
-          window.dispatchEvent(new CustomEvent('set-gallery-filter', { detail: filter }));
-          history.replaceState(null, '', `/?c=${filter}#gallery`);
-          document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
     </script>
   </body>
 </html>

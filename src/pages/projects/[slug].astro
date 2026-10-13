@@ -1,51 +1,13 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import HeroTitle from "../../components/HeroTitle.astro";
-import Gallery from "../../components/Gallery";
-import PressList from "../../components/PressList.astro";
-import Footer from "../../components/Footer.astro";
+import Project from "../../views/Project.astro";
 import { getSiteData } from "../../lib/sanity/data";
-import { urlFor } from "../../lib/sanity/client";
-import { toGalleryPhoto } from "../../lib/photos";
 
 export async function getStaticPaths() {
-  const { projects } = await getSiteData();
-  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+  const { projects } = await getSiteData("es");
+  return projects.map((p) => ({ params: { slug: p.slug } }));
 }
 
-const { project } = Astro.props;
-const { settings, categories, projects, press } = await getSiteData();
-const projectPress = press.filter((p) => p.project?.slug === project.slug);
-
-const categoryLinks = categories.filter((c) => c.photos.length > 0).map(({ name, slug }) => ({ name, slug }));
-const photos = project.photos.map((p) => toGalleryPhoto(p, undefined, project.name));
-const cover = project.coverImage ?? project.photos[0];
-const eyebrow = [project.category?.name, project.date?.slice(0, 4)].filter(Boolean).join(" · ");
+const { slug } = Astro.params;
 ---
 
-<Layout
-  title={`${project.name} | ${settings.name}`}
-  description={project.description || settings.seoDescription}
-  image={cover && urlFor(cover).width(1200).height(630).fit("crop").url()}
->
-  <main class="min-h-screen">
-    <Header settings={settings} categories={categoryLinks} hasProjects={projects.length > 0} hasPress={press.length > 0} />
-    <HeroTitle eyebrow={eyebrow || undefined} title={project.name} />
-    {project.description && (
-      <div class="max-w-[1440px] mx-auto w-full px-[60px] max-lg:px-6 -mt-2 pb-4 fade-in">
-        <p class="max-w-prose text-[14px] leading-relaxed text-text-70">{project.description}</p>
-      </div>
-    )}
-    <section class="max-w-[1440px] mx-auto w-full px-[60px] pt-[30px] pb-5 max-lg:px-6">
-      <Gallery client:load photos={photos} pageSize={60} />
-    </section>
-    <PressList items={projectPress} />
-    <div class="max-w-[1440px] mx-auto w-full px-[60px] pb-10 max-lg:px-6">
-      <a href="/#projects" class="text-[11px] tracking-[2px] uppercase text-text-60 hover:text-text transition-colors">
-        ← All projects
-      </a>
-    </div>
-    <Footer settings={settings} />
-  </main>
-</Layout>
+<Project lang="es" slug={slug!} />
