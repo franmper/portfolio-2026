@@ -70,7 +70,7 @@ const jsonLd = [
     <HeroTitle eyebrow={settings.tagline} title={settings.name} />
     <HeroGrid items={settings.hero} lang={lang} />
     <section id="gallery" class="max-w-[1440px] mx-auto w-full px-[60px] pt-[50px] pb-5 max-lg:px-6 scroll-mt-6">
-      <Gallery client:load photos={galleryPhotos} categories={categoryLinks} labels={{ all: tr.all, viewMore: tr.viewMore, noPhotos: tr.noPhotos, openPhoto: tr.openPhoto, lightbox: { ...tr.lightbox } }} />
+      <Gallery client:load shuffle photos={galleryPhotos} categories={categoryLinks} labels={{ all: tr.all, viewMore: tr.viewMore, noPhotos: tr.noPhotos, openPhoto: tr.openPhoto, lightbox: { ...tr.lightbox } }} />
     </section>
     <ProjectGrid projects={projects} lang={lang} />
     <PressList id="press" items={press} limit={8} lang={lang} />

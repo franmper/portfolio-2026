@@ -8,6 +8,8 @@ interface Props {
   /** Filter tabs. Omit to hide them (e.g. on project pages). */
   categories?: { name: string; slug: string }[];
   pageSize?: number;
+  /** Show the photos in a different random order on every page load. */
+  shuffle?: boolean;
   labels: {
     all: string;
     viewMore: string;
@@ -18,6 +20,15 @@ interface Props {
 }
 
 const ALL = "all";
+
+function shuffled<T>(items: T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
 
 function useColumnCount() {
   const [count, setCount] = useState(3);
@@ -36,11 +47,21 @@ function useColumnCount() {
   return count;
 }
 
-export default function Gallery({ photos, categories, pageSize = 24, labels }: Props) {
+export default function Gallery({ photos, categories, pageSize = 24, shuffle = false, labels }: Props) {
   const [activeFilter, setActiveFilter] = useState(ALL);
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const columnCount = useColumnCount();
+
+  // The server renders the photos in their original order (so the HTML is stable and indexable).
+  // Once in the browser, they are shuffled and the grid fades in, so there is no visible reordering.
+  const [ordered, setOrdered] = useState(photos);
+  const [ready, setReady] = useState(!shuffle);
+  useEffect(() => {
+    if (!shuffle) return;
+    setOrdered(shuffled(photos));
+    setReady(true);
+  }, [photos, shuffle]);
 
   // Old links like "/?c=rally" still pre-select that filter.
   useEffect(() => {
@@ -52,8 +73,8 @@ export default function Gallery({ photos, categories, pageSize = 24, labels }: P
   }, [pageSize]);
 
   const filteredPhotos = useMemo(
-    () => (activeFilter === ALL ? photos : photos.filter((p) => p.category === activeFilter)),
-    [photos, activeFilter],
+    () => (activeFilter === ALL ? ordered : ordered.filter((p) => p.category === activeFilter)),
+    [ordered, activeFilter],
   );
   const visiblePhotos = filteredPhotos.slice(0, visibleCount);
 
@@ -105,7 +126,11 @@ export default function Gallery({ photos, categories, pageSize = 24, labels }: P
       )}
 
       {/* Masonry grid. Keyed by filter so the fade-in replays when it changes. */}
-      <div key={activeFilter} className="flex gap-2 max-sm:flex-col animate-gallery-in">
+      <div
+        key={`${activeFilter}-${ready}`}
+        className="gallery-grid flex gap-2 max-sm:flex-col animate-gallery-in"
+        style={ready ? undefined : { opacity: 0 }}
+      >
         {columns.map((col, colIdx) => (
           <div key={colIdx} className="flex-1 flex flex-col gap-2 min-w-0">
             {col.map(({ photo, index }) => (
@@ -141,6 +166,11 @@ export default function Gallery({ photos, categories, pageSize = 24, labels }: P
           </div>
         ))}
       </div>
+
+      {/* Without JavaScript the grid is never shuffled, so it must not stay hidden. */}
+      <noscript>
+        <style>{".gallery-grid{opacity:1 !important}"}</style>
+      </noscript>
 
       {filteredPhotos.length === 0 && (
         <p className="text-center text-[12px] tracking-[2px] text-text-40 uppercase py-20">{labels.noPhotos}</p>
