@@ -15,7 +15,7 @@ export interface GalleryPhoto {
   full: { src: string; width: number; height: number }[];
 }
 
-const THUMB_WIDTHS = [400, 800, 1200, 1600];
+const THUMB_WIDTHS = [300, 500, 800, 1200, 1600];
 const FULL_WIDTHS = [1080, 1920, 2560];
 
 /** Size of the photo after applying the crop set in the Studio. */

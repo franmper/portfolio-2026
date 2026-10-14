@@ -30,24 +30,29 @@ function shuffled<T>(items: T[]): T[] {
   return copy;
 }
 
+// Viewport width (px) from which each column count applies. Narrower than the first entry: 2 columns.
+const COLUMN_BREAKPOINTS: [minWidth: number, columns: number][] = [
+  [1440, 6],
+  [1280, 5],
+  [1024, 4],
+  [640, 3],
+];
+const MIN_COLUMNS = 2;
+const columnsFor = (width: number) => COLUMN_BREAKPOINTS.find(([min]) => width >= min)?.[1] ?? MIN_COLUMNS;
+
 function useColumnCount() {
-  const [count, setCount] = useState(3);
+  // 5 is the most common desktop layout, so the server render usually matches and nothing reflows.
+  const [count, setCount] = useState(5);
   useEffect(() => {
-    const sm = window.matchMedia("(max-width: 639px)");
-    const lg = window.matchMedia("(max-width: 1023px)");
-    const update = () => setCount(sm.matches ? 1 : lg.matches ? 2 : 3);
+    const update = () => setCount(columnsFor(window.innerWidth));
     update();
-    sm.addEventListener("change", update);
-    lg.addEventListener("change", update);
-    return () => {
-      sm.removeEventListener("change", update);
-      lg.removeEventListener("change", update);
-    };
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
   }, []);
   return count;
 }
 
-export default function Gallery({ photos, categories, pageSize = 24, shuffle = false, labels }: Props) {
+export default function Gallery({ photos, categories, pageSize = 36, shuffle = false, labels }: Props) {
   const [activeFilter, setActiveFilter] = useState(ALL);
   const [visibleCount, setVisibleCount] = useState(pageSize);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -128,11 +133,11 @@ export default function Gallery({ photos, categories, pageSize = 24, shuffle = f
       {/* Masonry grid. Keyed by filter so the fade-in replays when it changes. */}
       <div
         key={`${activeFilter}-${ready}`}
-        className="gallery-grid flex gap-2 max-sm:flex-col animate-gallery-in"
+        className="gallery-grid flex gap-1.5 animate-gallery-in"
         style={ready ? undefined : { opacity: 0 }}
       >
         {columns.map((col, colIdx) => (
-          <div key={colIdx} className="flex-1 flex flex-col gap-2 min-w-0">
+          <div key={colIdx} className="flex-1 flex flex-col gap-1.5 min-w-0">
             {col.map(({ photo, index }) => (
               <button
                 key={photo.id}
@@ -148,7 +153,7 @@ export default function Gallery({ photos, categories, pageSize = 24, shuffle = f
                 <img
                   src={photo.src}
                   srcSet={photo.srcSet}
-                  sizes={`(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw`}
+                  sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, (max-width: 1279px) 25vw, (max-width: 1439px) 20vw, 220px"
                   width={photo.width}
                   height={photo.height}
                   alt={photo.alt}
