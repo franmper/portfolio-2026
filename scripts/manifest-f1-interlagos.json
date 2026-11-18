@@ -1,0 +1,6 @@
+{
+  "categories": [{ "name": "Formula", "slug": "formula" }],
+  "projects": [
+    { "folder": "/Users/franciscoperalta/Desktop/f1", "name": "F1 Interlagos 2026", "category": "formula" }
+  ]
+}
