@@ -1,0 +1,30 @@
+[
+  {
+    "outlet": "Mundo Motor Racing",
+    "url": "https://mundomotor-racing.com.ar/una-marea-argentina-un-fin-de-semana-complicado-y-una-carrera-de-resistencia/",
+    "title": "UNA MAREA ARGENTINA, UN FIN DE SEMANA COMPLICADO Y UNA CARRERA DE RESISTENCIA",
+    "date": "2026-11-11",
+    "project": null
+  },
+  {
+    "outlet": "Córdoba Competición",
+    "url": "https://cordobacompeticion.com/internacionales/f1/11-colapinto-para-cerrar-el-viernes-en-brasil/",
+    "title": "11° COLAPINTO PARA CERRAR EL VIERNES EN BRASIL",
+    "date": "2026-11-06",
+    "project": null
+  },
+  {
+    "outlet": "Mundo Motor Racing",
+    "url": "https://mundomotor-racing.com.ar/chapur-manda-en-la-copa-de-oro/",
+    "title": "Chapur manda en la Copa de Oro",
+    "date": "2026-10-14",
+    "project": "tc-cordoba-2026-velocidad"
+  },
+  {
+    "outlet": "Córdoba Competición",
+    "url": "https://cordobacompeticion.com/provinciales/hasta-yo-mismo-estoy-sorprendido-de-los-tiempos-pero-se-trabaja-mucho-entre-carreras/",
+    "title": "«HASTA YO MISMO ESTOY SORPRENDIDO DE LOS TIEMPOS, PERO SE TRABAJA MUCHO ENTRE CARRERAS»",
+    "date": "2026-10-26",
+    "project": "rally-cordobes-rio-tercero-2026"
+  }
+]
